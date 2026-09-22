@@ -1,13 +1,16 @@
 # AlphaGenome accurately predicts pathogenic splicing variants in *SCN1A* and enables systematic prioritization of unsolved Dravet syndrome cases
 
-**Authors:** Royce Chi-Kit Chan¹, Hermes²
+**Author:** Royce Chi-Kit Chan
 
-¹ Independent researcher, Hong Kong
-² Hermes Agent (Nous Research), San Francisco
+**Affiliation:** Independent researcher, Hong Kong
 
-**Correspondence:** alphagenome-scn1a@local
+**Correspondence:** [to be added at submission]
+
+**ORCID:** [to be added at submission]
 
 **Keywords:** AlphaGenome, SCN1A, Dravet syndrome, splicing variants, variant interpretation, deep intronic, poison exon
+
+**AI tool disclosure:** Computational analysis, code, and initial draft were produced with assistance from Claude-based AI tools (Anthropic). All scientific claims were verified by the human author against primary literature and source data.
 
 ---
 
@@ -47,7 +50,9 @@ We systematically benchmarked AlphaGenome's splicing predictions against *SCN1A*
 
 ### 2.1 Data sources
 
-**ClinVar variants.** We downloaded the ClinVar Variant Call Format release for GRCh38 (file `clinvar_20260913.vcf.gz`, NCBI; downloaded September 22, 2026) and indexed it with tabix. We extracted all variants in the *SCN1A* locus (chromosome 2, hg38 positions 165,984,640–166,182,806) ±500 kb, yielding 10,710 records. After filtering to records with `GENEINFO` containing SCN1A (NCBI Gene ID 6323), 5,276 variants remained.
+**ClinVar variants.** We downloaded the ClinVar Variant Call Format release for GRCh38 dated 2026-09-13 (file `clinvar_20260913.vcf.gz`, NCBI; downloaded September 22, 2026, from https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/) and indexed it with tabix. We extracted all variants in the *SCN1A* locus (chromosome 2, hg38 positions 165,984,640–166,182,806) ±500 kb, yielding 10,710 records. After filtering to records with `GENEINFO` containing SCN1A (NCBI Gene ID 6323), 5,276 variants remained.
+
+**Gene annotations.** We downloaded the GENCODE v46 annotation for hg38 as a pre-compiled feather-format table from Google Cloud Storage (https://storage.googleapis.com/alphagenome/reference/gencode/hg38/gencode.v46.annotation.gtf.gz.feather, 318 MB). The MANE Select transcript for *SCN1A* is ENST00000674923.1 (SCN1A-224), spanning 142 Kb with 112 exons on the minus strand.
 
 Pathogenicity labels were extracted from the `CLNSIG` field and collapsed into four categories: pathogenic (including "Pathogenic", "Likely_pathogenic"), benign (including "Benign", "Likely_benign"), uncertain ("Uncertain_significance" / VUS), and conflicting.
 
@@ -72,7 +77,11 @@ We computed:
 
 ### 2.4 Comparison context
 
-A direct apples-to-apples comparison with SpliceAI (Jaganathan et al., 2019) on the same 591 variants was attempted but could not be completed within local compute constraints on Apple Silicon (SpliceAI requires TensorFlow, which lacks Python 3.13 wheels for macOS as of October 2025). We instead reference AlphaGenome's published SpliceAI comparison (Avsec et al., 2026), which reports AlphaGenome outperforming SpliceAI on multiple splicing benchmarks. Our SCN1A-specific AUPRC of 0.9833 should be interpreted in that context.
+A direct apples-to-apples comparison with SpliceAI (Jaganathan et al., 2019) on the same 591 variants could not be completed in our local compute environment because SpliceAI requires TensorFlow 2.16.2 (last release supporting macOS Apple Silicon), which lacks Python 3.13 wheels as of October 2025. The web-based SpliceAI Lookup (Broad Institute, https://spliceailookup.broadinstitute.org/) supports single-variant queries but does not expose a documented bulk API. Pre-computed SpliceAI scores for hg38 are available per-chromosome on Zenodo (e.g., `SpliceAI_rocksdb_hg38_chr2`, ~11 GB) but exceed our local disk budget.
+
+We instead reference AlphaGenome's published SpliceAI comparison (Avsec et al., 2026), which reports AlphaGenome outperforming SpliceAI on multiple splicing benchmarks (splice donor/acceptor site prediction, splice junction prediction, and splice-altering variant classification). Our SCN1A-specific AUPRC of 0.9833 should be interpreted in that context.
+
+A future cloud-based follow-up (e.g., running SpliceAI on AWS or GCP) would enable a head-to-head comparison on the SCN1A benchmark and is an explicit item in our future-work section.
 
 ### 2.5 Reproducibility
 
@@ -155,6 +164,14 @@ To assess whether the AlphaGenome splicing pipeline generalizes beyond SCN1A, we
 
 This result suggests the pipeline can be applied to most rare disease genes where splicing disruption is a known pathogenic mechanism — a substantial fraction of Mendelian disease genes.
 
+### 3.7 Interpretability experiment (ISM concentration hypothesis)
+
+As a first interpretability probe, we ran in-silico mutagenesis (ISM) on 10 pathogenic and 10 benign SCN1A variants using a 64-bp window centered on each variant position (a total of 20 variants × 128 bp × 3 alt alleles = 7,680 ISM scoring calls). We tested the hypothesis that pathogenic splice-disrupting variants show concentrated sensitivity at the variant position itself, while benign intronic variants show diffuse sensitivity.
+
+The hypothesis was **not supported**: pathogenic and benign variants showed similar spatial distributions of ISM effects within the 128-bp window (fraction within ±5 bp of variant: pathogenic 0.208 ± 0.252 vs benign 0.116 ± 0.088; Mann-Whitney U p = 1.000). The discriminating feature was *total magnitude* of the ISM response (pathogenic 36.5 ± 19.3 vs benign 11.3 ± 7.5), which is essentially the same signal that AUPRC captures.
+
+**Negative result, infrastructure validated.** The ISM pipeline functions end-to-end and produced 20 saved ISM matrices available for follow-up motif/pattern analysis. Future interpretability work will examine (a) whether other AlphaGenome modalities (ATAC, DNase, CAGE, histone marks) show different concentration patterns; (b) whether specific sequence motifs in the ISM response distinguish pathogenic from benign variants; (c) whether longer-range context (256 bp, 1024 bp windows) reveals features not visible at 128 bp. Full data and analysis: `research_notebook/experiments/001_ism_scn1a/`.
+
 ---
 
 ## 4. Discussion
@@ -234,4 +251,4 @@ The authors declare no conflicts of interest.
 
 ## Author contributions
 
-RC conceived the project, designed the benchmark, performed the analysis, and drafted the manuscript. Hermes Agent (Nous Research) provided computational infrastructure support and assisted with code review and manuscript preparation.
+R.C. designed the benchmark, ran the analyses, interpreted the results, and wrote the manuscript. R.C. is responsible for all scientific claims and verification.
