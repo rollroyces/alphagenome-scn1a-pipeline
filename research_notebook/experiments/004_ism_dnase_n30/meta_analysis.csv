@@ -1,0 +1,2 @@
+n_pathogenic_combined,n_benign_combined,mannwhitney_u_combined_5bp,mannwhitney_p_combined_5bp,rank_biserial_combined_5bp,fisher_chi2,fisher_p,per_alt_u_5bp,per_alt_p_5bp,per_alt_r_5bp,per_alt_fisher_chi2,per_alt_fisher_p,exp002_scn1a_p_for_reference,exp002_method,this_method,n_genes,genes
+60,87,3828.0,7.998213955578299e-07,0.46666666666666656,35.69289000288225,3.162549261597533e-06,5792.0,3.139403991682496e-07,0.43012345679012354,39.84766937975864,4.880136242795777e-07,0.0057,"per-allele, two-sided","per-variant (avg 3 alts), greater",3,"dmd,cftr,scn1a"
