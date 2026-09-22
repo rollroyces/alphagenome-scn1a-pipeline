@@ -76,3 +76,36 @@ is needed.
   methods/interpretability paper.
 
 See `research_notebook/experiments/002_ism_atac/README.md`.
+
+### 2026-09-22 — Experiment 003: DNase concentration replication (DMD + CFTR)
+
+**Tested:** Whether the DNase ±5bp concentration difference from Exp 002 (SCN1A,
+p=0.005) replicates on DMD and CFTR.
+
+**Result:** **NULL — does not replicate.**
+
+| Gene | path ±5bp | benign ±5bp | p-value |
+|---|---|---|---|
+| SCN1A (Exp 002) | 0.107 | 0.073 | 0.005 |
+| DMD (Exp 003) | 0.112 | 0.087 | 0.137 (ns) |
+| CFTR (Exp 003) | 0.082 | 0.109 | 0.594 (ns) |
+| Combined (Exp 003) | 0.098 | 0.098 | 0.376 (ns) |
+| Fisher meta p across genes | | | 0.286 (ns) |
+
+**Honest interpretation:** Exp 002 was almost certainly a Type-I error from small n
+(n=10) on a single test. The SCN1A "DNase concentration signature" was not a real
+cross-gene effect. We have no evidence for a robust DNase-based pathogenicity feature.
+
+**What this means:**
+- The ISM concentration direction is not near-term publishable
+- The methods paper (AUPRC > 0.98 across 5 genes) is unaffected — it's load-bearing
+  on different evidence (splicing scores, not chromatin patterns)
+- We have 60 ISM matrices saved across 3 experiments — a real dataset for future
+  pattern/motif analysis
+- Time to pivot: combine modalities, increase n, or try tissue-specific features
+
+**Lesson logged:** A single p=0.005 result on n=10 is not a finding — it's a
+hypothesis. Replication is the only way to know. We did the replication; it's null.
+That's an honest answer, not a failure.
+
+See `research_notebook/experiments/003_ism_dnase_replication/README.md`.

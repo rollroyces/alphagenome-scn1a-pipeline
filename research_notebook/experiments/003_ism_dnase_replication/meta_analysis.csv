@@ -1,0 +1,2 @@
+n_pathogenic_combined,n_benign_combined,mannwhitney_u_combined_5bp,mannwhitney_p_combined_5bp,fisher_chi2,fisher_p,per_alt_u_5bp,per_alt_p_5bp,exp002_scn1a_p_for_reference,exp002_method,this_method
+15,20,160.0,0.37574827209398753,5.016133810533757,0.28564606807474824,216.0,0.3374711394712218,0.0057,"per-allele, two-sided","per-variant (avg 3 alts), greater"
