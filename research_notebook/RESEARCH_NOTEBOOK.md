@@ -37,4 +37,18 @@ If yes → universal grammar. If no → gene-specific rules.
 
 ## Log
 
-(entries added as we go)
+### 2026-09-22 — Experiment 001: ISM concentration hypothesis
+
+**Tested:** Whether pathogenic splice-disrupting variants in SCN1A show concentrated
+ISM effects at the variant position vs benign intronic variants showing diffuse effects.
+
+**Result:** **Hypothesis NOT supported.** Pathogenic variants show similar spatial
+distribution to benign; the difference is in total magnitude (which AUPRC captures).
+Result is null but **infrastructure is validated** — the pipeline works end-to-end
+and produced 20 ISM matrices saved for follow-up analysis.
+
+**Decision point:** Try pattern-based features (motif content of ISM matrices) or
+switch modalities (ATAC, DNase, CAGE) for the next experiment. Or pivot to
+paper polish while the ISM direction matures.
+
+See `research_notebook/experiments/001_ism_scn1a/README.md` for full writeup.
