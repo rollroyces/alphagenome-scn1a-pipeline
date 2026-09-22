@@ -1,0 +1,212 @@
+[
+  {
+    "clinvar_id": "4852475",
+    "title": "GRCh38/hg38 2q24.3(chr2:165209651-166443535)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "3363145",
+    "title": "NM_001165963.4(SCN1A):c.1353_1354dup (p.Lys452fs)",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "K452fs",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "3336690",
+    "title": "GRCh38/hg38 2q24.3(chr2:165991235-166002763)x1",
+    "clinical_significance": "Likely pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "1707404",
+    "title": "GRCh38/hg38 2q24.3(chr2:165383106-167432622)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "1707403",
+    "title": "GRCh38/hg38 2q24.3(chr2:165155128-166062451)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "155321",
+    "title": "GRCh38/hg38 2q24.3(chr2:165222998-166664612)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "154605",
+    "title": "GRCh38/hg38 2q24.3(chr2:165986097-166443535)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "154177",
+    "title": "GRCh38/hg38 2q24.1-31.1(chr2:154294042-175989372)x3",
+    "clinical_significance": "Pathogenic",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "153359",
+    "title": "GRCh38/hg38 2q24.3(chr2:165238425-166114982)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "147966",
+    "title": "GRCh38/hg38 2q24.3(chr2:165888312-166185811)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "146138",
+    "title": "GRCh38/hg38 2q24.3(chr2:165542113-166137050)x3",
+    "clinical_significance": "Uncertain significance",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "144471",
+    "title": "GRCh38/hg38 2q24.3(chr2:164920562-167536439)x3",
+    "clinical_significance": "Pathogenic",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "60251",
+    "title": "GRCh38/hg38 2q24.3(chr2:166044436-166079787)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "60249",
+    "title": "GRCh38/hg38 2q24.3-31.1(chr2:164066038-172097886)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "60248",
+    "title": "GRCh38/hg38 2q24.3-32.1(chr2:163965382-182195062)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "60245",
+    "title": "GRCh38/hg38 2q24.3(chr2:163455290-166962322)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "59150",
+    "title": "GRCh38/hg38 2q24.1-24.3(chr2:154366788-167048902)x3",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "58906",
+    "title": "GRCh38/hg38 2q24.3(chr2:165542962-166152073)x3",
+    "clinical_significance": "Uncertain significance",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "57491",
+    "title": "GRCh38/hg38 2q24.3-31.1(chr2:164850117-175559190)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "57318",
+    "title": "GRCh38/hg38 2q24.1-24.3(chr2:158382388-166605758)x1",
+    "clinical_significance": "Pathogenic",
+    "review_status": "criteria provided, single submitter",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  },
+  {
+    "clinvar_id": "12899",
+    "title": "NC_000002.12:g.(?_165985812)_(166002754_166009718)del",
+    "clinical_significance": "Pathogenic",
+    "review_status": "no assertion criteria provided",
+    "condition": "",
+    "molecular_consequence": "",
+    "hgvs": "",
+    "canonical_spdi": ""
+  }
+]

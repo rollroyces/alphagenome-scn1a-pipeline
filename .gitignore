@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+
+# API key leak guard — keep these OUT of git always
+.env
+*.key
+.alphagenome_key
+
+# Large data files (regenerate from public sources)
+data/clinvar_grch38.vcf.gz
+data/clinvar_grch38.vcf.gz.tbi
+data/gencode.v46.annotation.gtf.gz.feather
+
+# Upstream tutorial repo (we just clone it for reference; bulky)
+tutorials/alphagenome-upstream/
+
+# Editor / OS scratch
+*.tmp
+.Trash-*
