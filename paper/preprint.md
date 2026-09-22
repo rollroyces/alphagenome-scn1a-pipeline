@@ -192,17 +192,22 @@ Published SpliceAI performance on comparable splicing benchmarks (Jaganathan et 
 
 Several caveats apply:
 
-1. **SCN1A is well-characterized.** Performance may differ in less-studied genes where AlphaGenome's training signal is weaker.
+1. **SCN1A is well-characterized, but our cross-disease evidence (Section 3.6) shows generalization to 4 other rare disease genes.** Performance in less-studied genes remains unknown.
 2. **Training-set leakage cannot be excluded.** ClinVar pathogenicity labels may have been used during AlphaGenome's training. We have not controlled for this; a rigorous evaluation would use a held-out test set.
 3. **Pathogenicity ≠ causation.** ClinVar pathogenicity reflects prior knowledge that may itself depend on computational predictions. Circular validation is possible.
 4. **Top-5% precision is over-optimistic at population scale.** Our benchmark is enriched for known pathogenic variants; population-scale deployment may yield lower precision.
+5. **MECP2 result is uncertain.** The perfect AUPRC on 12 positives has wide confidence intervals; the result is included for completeness but should not be over-interpreted.
+6. **No direct SpliceAI comparison.** TensorFlow lacks Python 3.13 wheels on macOS Apple Silicon, and SpliceAI Lookup does not expose a bulk API. Head-to-head benchmarking would require cloud compute.
 
 ### 4.4 Future directions
 
-- **VUS re-scoring.** Apply AlphaGenome to all 1,697 *SCN1A* VUS and rank by predicted splice impact. Top candidates will be shared with the Carvill and Sparber labs for minigene validation.
-- **Extension to other DEE genes.** Apply the same pipeline to *SCN2A*, *SCN8A*, *STXBP1*, and other genes with non-coding unsolved cases.
-- **Comparative evaluation.** A direct SpliceAI vs AlphaGenome comparison on a held-out set (or via cloud compute) is a natural follow-up.
-- **Integration with minigene assay.** Sparber et al. (2023) have validated 18 deep intronic *SCN1A* variants experimentally; this set provides an ideal benchmark for any future model.
+- **VUS re-scoring → already done.** See Section 3.4: 61 high-impact SCN1A VUS flagged; top candidates are listed in `outputs/vus_high_impact_with_gnomad.csv` with gnomAD population frequencies and PubMed cross-references. Top 4 Tier-1 candidates (explicit `splice_acceptor_variant` / `splice_donor_variant` annotations) are in `paper/candidate_report.md`.
+- **Cross-disease extension → already done.** See Section 3.6: benchmarked on 5 genes (SCN1A, SCN2A, MECP2, CFTR, DMD); all AUPRC > 0.98.
+- **Multi-modal AlphaGenome analysis.** The benchmark uses only splicing scorers. Re-running with ATAC, DNase, CAGE, and histone-mark scorers could identify variants that disrupt regulatory regions rather than splicing — a separate mechanism class our current pipeline does not flag.
+- **Interpretability.** Section 3.7 describes a negative result for one specific ISM hypothesis (concentration at variant position). Future work will test whether motif content in the ISM response (rather than spatial distribution) distinguishes pathogenic from benign variants.
+- **Comparative evaluation.** A direct SpliceAI vs AlphaGenome comparison on a held-out set (via cloud compute) is a natural follow-up. The Cross-Disease Benchmark dataset (5 genes × ~700 variants each) is suitable for this comparison once SpliceAI can be run.
+- **Integration with minigene assay.** Sparber et al. (2023) validated 18 deep intronic *SCN1A* variants experimentally; their protocol and the Tier-1 candidates in our list provide an immediate path to laboratory validation.
+- **Lab collaboration / outreach.** Outreach to Carvill, Sparber, and Helbig labs is in progress (templates in `paper/outreach_template.md`).
 
 ---
 
