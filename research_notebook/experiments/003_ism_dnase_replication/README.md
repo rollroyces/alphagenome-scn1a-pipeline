@@ -5,20 +5,45 @@
 
 ## Background and motivation
 
-Experiment 002 found that pathogenic SCN1A variants have more concentrated DNase ISM effects (±5bp fraction: path 0.107 ± 0.018 vs benign 0.073 ± 0.031, Mann-Whitney U p=0.005, n=10+10). This was the first positive result in our ISM line.
+Experiment 002 found that pathogenic SCN1A variants have more concentrated DNase ISM effects (±5bp fraction: path 0.107 ± 0.018 vs benign 0.073 ± 0.031, Mann-Whitney U p=0.006, n=10+10, two-sided per-allele). This was the first positive result in our ISM line.
 
 But n=10 is fragile, and a single statistical test on a single gene is not a finding — it's a hypothesis. **Replication is the only way to know if it's real.**
 
 ## Method
 
 Same as Experiment 002, but on DMD and CFTR:
-- 10 pathogenic + 10 benign SNVs per gene (intronic only, excluding splice_donor/splice_acceptor)
+- 10 pathogenic + 10 benign SNVs per gene, picked by SPLICE_SITES_score (top 10 pathogenic, bottom 10 benign) from the cross-disease benchmark CSVs
 - 64 bp ISM window each side, 16,384 bp context
 - DNASE CenterMaskScorer only (skip ATAC — testing the specific Exp 002 finding)
 - Per-variant aggregation (average the 3 alt alleles) — slightly different from Exp 002's per-allele method; cross-checked with both
 - Mann-Whitney U, one-sided `alternative='greater'`
 
-**Selection note:** DMD n_path was 8 (only 8 qualifying intronic SNVs after splice filtering); CFTR n_path was 7. We kept these smaller positive sets because strict replication matters more than matching n exactly.
+**Important deviation from the original task brief** (documented in the script):
+The task asked to "exclude splice_donor, splice_acceptor" when picking variants,
+but the pathogenic set in the DMD and CFTR cross-disease CSVs is *exclusively*
+annotated as splice donor or acceptor — there are zero plain `intron_variant`
+annotations in the pathogenic class. Applying the literal filter would leave
+zero pathogenic variants for both genes, making the experiment impossible.
+
+We therefore mirror Experiment 002's actual selection logic: pick the top-10
+pathogenic and bottom-10 benign SNVs by `SPLICE_SITES_score` (no consequence
+filter). Exp 002's SCN1A pathogenic set was itself dominated by splice
+donor/acceptor variants (8 + 3 = 11 out of 13 unique positions), so this
+deviation preserves the experimental design that produced the original
+p=0.0057 finding. This means we are testing "do pathogenic splicing-region
+variants differ from benign deep-intronic variants in DNase concentration?" — the
+same question Exp 002 actually tested.
+
+**Selection note:** DMD n_path is 8 (not 10) and CFTR n_path is 7 (not 10) after
+per-variant aggregation. The raw selection picks 10 pathogenic positions per gene,
+but several pathogenic positions appear multiple times in the cross-disease CSV
+under different alts (e.g., DMD chrX:32595877 appears at rank 0 and rank 7 with
+different alts at the same position; CFTR chr7:117504364 and chr7:117642437 each
+appear twice). After averaging the 3 alts of each (gene, position, ref) tuple,
+the unique count drops to 8 and 7. Benign sets are 10+10 because no benign
+positions are duplicated in the top-10 bottom. This is a per-variant-aggregation
+artifact — per-alt-allele aggregation (matching Exp 002's method) keeps n=10+10
+and gives the same null result (U=216.0, p=0.337).
 
 ## Results
 
@@ -50,10 +75,11 @@ Possible explanations:
 
 ## Negative results / caveats
 
-- DMD pathogenic n=8 (not 10): the SNV filter (ref.len==1, alt.len==1) + intron-only filter dropped some variants. Re-running with different filters (e.g., allowing 2-3 bp indels) is a future option.
-- CFTR pathogenic n=7: same issue. CFTR has many deletion variants, fewer SNVs.
-- All 60 ISM calls succeeded (100% API success rate across 3 experiments).
+- Per-variant aggregation reduces DMD pathogenic to n=8 and CFTR pathogenic to n=7 because the top-10 pathogenic by SPLICE_SITES_score in those CSVs include duplicate (gene, position, ref) keys (see Selection note above). Per-alt-allele aggregation (matching Exp 002's method) keeps n=10+10 and gives the same null result.
+- We did NOT apply an intronic-only filter, because the pathogenic sets in the DMD and CFTR CSVs contain no `intron_variant` annotations — they are exclusively `splice_donor_variant` / `splice_acceptor_variant`. See "Important deviation from the original task brief" in the Method section.
+- All 60 ISM calls succeeded (100% API success rate across 3 experiments: Exp 001, 002, 003).
 - Per-variant aggregation differs from per-allele aggregation; both methods agree the effect is not significant.
+- The benign sets contain 10/10 unique positions for both genes; the pathogenic sets in Exp 002's SCN1A were also dominated by splice donor/acceptor. The methodological comparison between Exp 002 and Exp 003 is therefore clean.
 
 ## Next directions
 
