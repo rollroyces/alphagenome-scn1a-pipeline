@@ -37,7 +37,7 @@ If yes → universal grammar. If no → gene-specific rules.
 
 ## Log
 
-### 2026-09-22 — Experiment 001: ISM concentration hypothesis
+### 2026-09-22 — Experiment 001: ISM concentration hypothesis (splicing)
 
 **Tested:** Whether pathogenic splice-disrupting variants in SCN1A show concentrated
 ISM effects at the variant position vs benign intronic variants showing diffuse effects.
@@ -52,3 +52,27 @@ switch modalities (ATAC, DNase, CAGE) for the next experiment. Or pivot to
 paper polish while the ISM direction matures.
 
 See `research_notebook/experiments/001_ism_scn1a/README.md` for full writeup.
+
+### 2026-09-22 — Experiment 002: ISM concentration in chromatin modalities
+
+**Tested:** Whether chromatin-level features (ATAC, DNase) show a concentration
+difference between pathogenic and benign SCN1A variants where splicing did not.
+
+**Result:** **PARTIAL — DNase shows a statistically significant concentration
+difference (Mann-Whitney U p=0.005, n=10+10), but ATAC does not (p=0.18).**
+This is the first positive result in the ISM line. **However, n=10 is small.**
+The result is hypothesis-generating, not confirmed. Replication on DMD/CFTR
+is needed.
+
+**Caveats the README understates:**
+- n=10 per group is fragile; minimum two-sided p-value with this n is ~0.0001
+- One outlier (benign chr2:166073346) has a huge DNase max value (217 at +32 bp)
+  in an intergenic region — likely an AlphaGenome artifact, not biology
+- The subagent's "real effect" framing should be tempered to "hypothesis-generating
+  result pending replication"
+
+**Honest next step:** Run on DMD and CFTR (cross-disease replication). If the
+  DNase pattern holds, this becomes a real finding worth documenting in a
+  methods/interpretability paper.
+
+See `research_notebook/experiments/002_ism_atac/README.md`.
