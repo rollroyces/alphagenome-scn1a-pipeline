@@ -80,17 +80,31 @@ See `research_notebook/experiments/002_ism_atac/README.md`.
 ### 2026-09-22 — Experiment 003: DNase concentration replication (DMD + CFTR)
 
 **Tested:** Whether the DNase ±5bp concentration difference from Exp 002 (SCN1A,
-p=0.005) replicates on DMD and CFTR.
+p=0.006) replicates on DMD and CFTR.
 
 **Result:** **NULL — does not replicate.**
 
 | Gene | path ±5bp | benign ±5bp | p-value |
 |---|---|---|---|
-| SCN1A (Exp 002) | 0.107 | 0.073 | 0.005 |
+| SCN1A (Exp 002) | 0.107 | 0.073 | 0.006 |
 | DMD (Exp 003) | 0.112 | 0.087 | 0.137 (ns) |
 | CFTR (Exp 003) | 0.082 | 0.109 | 0.594 (ns) |
 | Combined (Exp 003) | 0.098 | 0.098 | 0.376 (ns) |
 | Fisher meta p across genes | | | 0.286 (ns) |
+
+**Method deviation from my task brief, caught by Subagent:** I asked the subagent
+to filter to "intronic only, excluding splice_donor/splice_acceptor". The DMD/CFTR
+cross-disease CSVs have *zero* plain intron_variant annotations in the pathogenic
+class — they're all splice_donor or splice_acceptor. Strict filtering would have
+left no pathogenic variants. Subagent correctly mirrored Exp 002's actual selection
+(top-10 by SPLICE_SITES_score, no consequence filter). Exp 002's SCN1A pathogenic
+set was itself 8 splice_donor + 3 splice_acceptor out of 13 unique positions.
+
+**Per-variant aggregation note:** DMD n=8, CFTR n=7 (not 10 each) because the
+top-10 picks include duplicate (gene, position, ref) tuples that collapse when
+we average the 3 alts. Per-alt-allele aggregation (Exp 002's method) keeps n=10+10
+and gives the same null result (p=0.337), so the conclusion is robust to either
+aggregation method.
 
 **Honest interpretation:** Exp 002 was almost certainly a Type-I error from small n
 (n=10) on a single test. The SCN1A "DNase concentration signature" was not a real
