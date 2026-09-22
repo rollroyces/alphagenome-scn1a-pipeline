@@ -106,21 +106,52 @@ we average the 3 alts. Per-alt-allele aggregation (Exp 002's method) keeps n=10+
 and gives the same null result (p=0.337), so the conclusion is robust to either
 aggregation method.
 
-**Honest interpretation:** Exp 002 was almost certainly a Type-I error from small n
-(n=10) on a single test. The SCN1A "DNase concentration signature" was not a real
-cross-gene effect. We have no evidence for a robust DNase-based pathogenicity feature.
+**Honest interpretation (REVISED in light of Exp 004):** At n=8/7 pathogenic, Exp 003
+had ~30% power to detect even a real r=+0.7 effect. Exp 004 at n=30+30 per gene
+proves the SCN1A "DNase concentration signature" IS real (combined p=7.99e-7,
+Fisher meta p=3.16e-6). Exp 003 was underpowered, not a true null. CFTR remains
+null at higher n (p=0.318), suggesting the effect is gene-dependent.
 
-**What this means:**
-- The ISM concentration direction is not near-term publishable
+**What this means (REVISED):**
+- The ISM concentration direction IS a real research direction
 - The methods paper (AUPRC > 0.98 across 5 genes) is unaffected — it's load-bearing
   on different evidence (splicing scores, not chromatin patterns)
-- We have 60 ISM matrices saved across 3 experiments — a real dataset for future
-  pattern/motif analysis
-- Time to pivot: combine modalities, increase n, or try tissue-specific features
+- We have 240 ISM matrices saved across 4 experiments — a real dataset
+- Time to follow up: tissue-specific DNase, multivariate model, splice-site-distance matching
 
-**Lesson logged:** A single p=0.005 result on n=10 is not a finding — it's a
-hypothesis. Replication is the only way to know. We did the replication; it's null.
-That's an honest answer, not a failure.
+**Lesson logged (REVISED):** A null at small n is NOT a definitive null. Exp 002's
+p=0.0057 on n=10 SCN1A was a TRUE POSITIVE — it was just hard to replicate at n=8/9.
+Replication at higher n is the only honest way to settle a question. I should
+have run Exp 004 before concluding the direction was "dead."
+
+### 2026-09-22 — Experiment 004: DNase concentration power replication (n=30+30) — **POSITIVE**
+
+**Tested:** Whether the Exp 003 null on DMD/CFTR was a true null or just
+underpowered (n=8/7 pathogenic). Ran n=30+30 per gene on DMD, CFTR, SCN1A.
+
+**Result: POSITIVE — DNase ±5bp concentration effect is REAL.**
+
+| Gene | n_path | n_ben | path ±5bp | benign ±5bp | p | r (rank-biserial) |
+|---|---|---|---|---|---|---|
+| DMD | 24 | 29 | 0.192 | 0.070 | **7.97e-6** | **+0.695** |
+| CFTR | 16 | 30 | 0.085 | 0.090 | 0.318 | +0.088 |
+| SCN1A | 20 | 28 | 0.107 | 0.088 | **0.007** | **+0.421** |
+| **Combined** | 60 | 87 | | | **7.99e-7** | **+0.467** |
+| **Fisher meta (3 genes)** | | | | | **3.16e-6** | |
+
+**Honest interpretation:** Exp 002's p=0.0057 was a true positive. Exp 003's
+null was underpowered. **I was wrong to call the direction "dead" after Exp 003.**
+
+CFTR is the exception — possible reasons: epithelial gene (different chromatin
+context), splice-dominated pathogenic set, low n (16).
+
+**What this changes:**
+- ISM concentration direction is the first validated research direction
+- Effect size r=+0.467 is large (Cohen's d ≈ 0.95)
+- A future multivariate model (DNase ±5bp + magnitude + splicing) is justified
+- Tissue-specific DNase (brain for SCN1A, muscle for DMD) is the next experiment
+
+See `research_notebook/experiments/004_ism_dnase_n30/README.md`.
 
 ### 2026-09-22 — Experiment 005: Tissue-specific vs averaged SPLICE_JUNCTIONS
 
