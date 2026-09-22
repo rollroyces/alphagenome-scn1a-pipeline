@@ -122,4 +122,38 @@ cross-gene effect. We have no evidence for a robust DNase-based pathogenicity fe
 hypothesis. Replication is the only way to know. We did the replication; it's null.
 That's an honest answer, not a failure.
 
-See `research_notebook/experiments/003_ism_dnase_replication/README.md`.
+### 2026-09-22 — Experiment 005: Tissue-specific vs averaged SPLICE_JUNCTIONS
+
+**Tested:** Whether brain-tissue-filtered AlphaGenome splicing scores differ from
+averaged across-tissue scores for brain-expressed rare disease genes.
+
+**Result:** **NULL — brain-filtered SPLICE_JUNCTIONS does not significantly differ
+from averaged across 5 genes.**
+
+| Gene | AUPRC (avg) | AUPRC (brain) | Δ |
+|---|---|---|---|
+| SCN1A | 0.9631 | 0.9626 | -0.0005 |
+| SCN2A | 0.9818 | 0.9818 | 0.0000 |
+| MECP2 | 1.0000 | 1.0000 | 0.0000 |
+| CFTR | 0.9999 | 0.9997 | -0.0002 |
+| DMD | 0.9984 | 0.9970 | -0.0014 |
+
+One-sample t-test p=0.19, Wilcoxon p=0.25. **Not significant.** Trend slightly
+negative (brain is slightly worse on average).
+
+**Honest interpretation:** Pathogenic splicing variants disrupt canonical splice
+sites regardless of tissue context. Tissue-specific tracks do not add information
+beyond what averaged tracks capture. Splicing is sequence-driven; the tissue context
+matters more for chromatin/enhancer disruption than for splice-site disruption.
+
+**Side finding:** SPLICE_SITES (2 tracks, AUPRC=0.9833 on SCN1A) is more discriminative
+than SPLICE_JUNCTIONS (367 tracks, AUPRC=0.9631 on SCN1A). The simpler scorer wins.
+
+**What this means for the program:**
+- Tissue-specific splicing is not a near-term paper topic
+- The "tissue-specific is better" hypothesis is rejected for splicing
+- We now have evidence that the methods paper's choice of SPLICE_SITES was sound
+- Future tissue-specific work should focus on chromatin (ATAC, DNase, CHIP_HISTONE)
+  or enhancer variants, not splicing
+
+See `research_notebook/experiments/005_tissue_specific_splicing/README.md`.
