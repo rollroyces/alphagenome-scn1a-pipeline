@@ -1,0 +1,85 @@
+Creating atlas client...
+
+=== Tissue track discovery ===
+
+SCN1A (brain):
+  BRAIN tracks matched: 20 of 305
+  biosample_names: ['astrocyte of the cerebellum', 'astrocyte of the hippocampus', 'astrocyte of the spinal cord', 'brain', 'brain microvascular endothelial cell', 'brain pericyte', 'cerebellar cortex', 'cerebellum', 'dorsolateral prefrontal cortex', 'ecto neural progenitor cell', 'frontal cortex', 'glutamatergic neuron', 'left renal cortex interstitium', 'neural crest cell', 'neural progenitor cell', 'neuronal stem cell', 'renal cortex interstitium', 'right renal cortex interstitium', 'smooth muscle cell of the brain vasculature', 'spinal cord']
+
+DMD (muscle):
+  MUSCLE tracks matched: 15 of 305
+  biosample_names: ['cardiac fibroblast', 'cardiac muscle cell', 'cardiac septum', 'forelimb muscle', 'hindlimb muscle', 'left cardiac atrium', 'muscle of arm', 'muscle of back', 'muscle of leg', 'muscle of trunk', 'myocyte', 'psoas muscle', 'right cardiac atrium', 'skeletal muscle cell', 'skeletal muscle myoblast']
+
+======================================================================
+GENE: SCN1A
+======================================================================
+  Top-30 pathogenic: 30 rows, 20 unique (pos,ref)
+  Bottom-30 benign: 30 rows, 28 unique (pos,ref)
+
+  --- Condition: averaged (305 tracks) ---
+I0923 10:03:43.524961 4321895 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0923 10:03:43.528448 4322041 ev_poll_posix.cc:587] FD from fork parent still in poll list: fd(7, generation: 1)
+  (pathogenic/avg) shape=(30, 305), elapsed=2.9s
+  (benign/avg) shape=(30, 305), elapsed=2.8s
+    n_path(per-var)=20, n_ben(per-var)=28, n_tracks=305
+    max-abs:  path=0.2162  ben=0.1193  U=434.0  p=0.0006636  r=+0.550  *** SIG
+    mean-abs: path=0.0503  ben=0.0217  U=481.0  p=1.377e-05  r=+0.718  *** SIG
+
+  --- Condition: tissue-filtered ---
+  (pathogenic/tissue) shape=(30, 20), elapsed=2.4s
+  (benign/tissue) shape=(30, 20), elapsed=2.3s
+    n_path(per-var)=20, n_ben(per-var)=28, n_tracks=20
+    max-abs:  path=0.1514  ben=0.0669  U=458.0  p=0.0001029  r=+0.636  *** SIG
+    mean-abs: path=0.0445  ben=0.0208  U=479.0  p=1.655e-05  r=+0.711  *** SIG
+
+======================================================================
+GENE: DMD
+======================================================================
+  Top-30 pathogenic: 30 rows, 24 unique (pos,ref)
+  Bottom-30 benign: 30 rows, 29 unique (pos,ref)
+
+  --- Condition: averaged (305 tracks) ---
+  (pathogenic/avg) shape=(30, 305), elapsed=2.4s
+  (benign/avg) shape=(30, 305), elapsed=2.8s
+    n_path(per-var)=24, n_ben(per-var)=29, n_tracks=305
+    max-abs:  path=0.3448  ben=0.0975  U=652.0  p=2.929e-08  r=+0.874  *** SIG
+    mean-abs: path=0.0600  ben=0.0214  U=645.0  p=5.853e-08  r=+0.853  *** SIG
+
+  --- Condition: tissue-filtered ---
+  (pathogenic/tissue) shape=(30, 15), elapsed=2.6s
+  (benign/tissue) shape=(30, 15), elapsed=2.7s
+    n_path(per-var)=24, n_ben(per-var)=29, n_tracks=15
+    max-abs:  path=0.2501  ben=0.0558  U=651.0  p=3.236e-08  r=+0.871  *** SIG
+    mean-abs: path=0.1100  ben=0.0216  U=658.0  p=1.598e-08  r=+0.891  *** SIG
+
+Saved -> research_notebook/experiments/006_tissue_specific_dnase/summary_by_gene_condition.csv
+
+======================================================================
+COMPARISON: averaged vs tissue-filtered
+======================================================================
+
+Max-abs p-values:
+condition           avg        tissue
+gene                                 
+dmd        2.928668e-08  3.236191e-08
+scn1a      6.636421e-04  1.028523e-04
+
+Max-abs r (rank-biserial):
+condition       avg    tissue
+gene                         
+dmd        0.873563  0.870690
+scn1a      0.550000  0.635714
+
+Delta p (tissue - avg), negative = tissue p-value SMALLER (better):
+gene
+dmd      3.075235e-09
+scn1a   -5.607898e-04
+
+Delta r (tissue - avg), positive = tissue effect LARGER:
+gene
+dmd     -0.002874
+scn1a    0.085714
+
+Saved -> research_notebook/experiments/006_tissue_specific_dnase/tissue_vs_averaged.png
+
+All outputs in research_notebook/experiments/006_tissue_specific_dnase/
