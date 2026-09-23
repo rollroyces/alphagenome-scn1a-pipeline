@@ -33,7 +33,7 @@ Would your clinical genomics team be open to:
 1-page brief attached. No funding requested.
 
 Best regards,  
-Royce Chan  
+Royce Lam  
 Independent researcher, Hong Kong  
 github.com/rollroyces/alphagenome-scn1a-pipeline
 

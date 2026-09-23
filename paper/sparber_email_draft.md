@@ -28,7 +28,7 @@ All 4 are gnomAD-absent or ultra-rare, none have published functional validation
 Would your lab be open to extending the 2023 minigene protocol to these? Co-authorship appropriate. Happy to do a 30-min Zoom to discuss.
 
 Best regards,  
-Royce Chan  
+Royce Lam  
 Independent researcher, Hong Kong  
 github.com/rollroyces/alphagenome-scn1a-pipeline
 

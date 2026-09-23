@@ -25,7 +25,7 @@ Would a 15-minute Zoom work to discuss whether these are testable in your lab? I
 No funding requested. Co-authorship on any resulting publication would be appropriate.
 
 Best regards,  
-Royce Chan  
+Royce Lam  
 Independent researcher, Hong Kong  
 github.com/rollroyces/alphagenome-scn1a-pipeline
 
@@ -91,8 +91,8 @@ are in the same variant class as the 18 you validated:
 Would your lab be open to extending the 2023 protocol to these? 
 1-page brief attached.
 
-Best regards,
-Royce Chan
+Best regards,  
+Royce Lam
 Independent researcher, Hong Kong
 ```
 
@@ -114,7 +114,7 @@ Would your clinical genomics team have a workflow for triaging these
 for the Dravet variant curation effort? 1-page brief attached.
 
 Best regards,
-Royce Chan
+Royce Lam
 ```
 
 # Final action plan
