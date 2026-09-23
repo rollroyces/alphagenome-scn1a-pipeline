@@ -1,9 +1,9 @@
 # Cross-Disease AlphaGenome Benchmark — Results
 
 SPLICE_SITES scores from AlphaGenome for pathogenic splicing variants vs. benign intronic variants
-across 8 rare disease genes (5 filtered + KCNQ2 unfiltered in the
-original report; with Exp 012 the benchmark now spans 6 filtered genes
-including COL4A5). Higher AUPRC = better discrimination.
+across 8 rare disease genes (7 filtered + KCNQ2 unfiltered in the
+original report; with Exp 012 the benchmark now spans 7 filtered genes
+including FBN1). Higher AUPRC = better discrimination.
 
 ## SPLICE_SITES
 
@@ -52,12 +52,14 @@ including COL4A5). Higher AUPRC = better discrimination.
 
 \* KCNQ2 was scored with **no molecular-consequence filter** — positives are
 all pathogenic SNVs and negatives are all benign SNVs (per Exp 008 protocol).
-The other **5 filtered genes** (SCN1A, SCN2A, MECP2, CFTR, DMD) filtered
-positives to pathogenic + splicing-related consequences and negatives to
-benign + intronic consequences. With Exp 012 (this report), **COL4A5** is
-the 6th filtered gene, scored on the same apples-to-apples protocol.
-See `research_notebook/experiments/008_kcnq2_benchmark/README.md` for
-KCNQ2 details and an apples-to-apples re-analysis.
+The other **7 filtered genes** (SCN1A, SCN2A, MECP2, CFTR, DMD, COL4A5,
+FBN1) filtered positives to pathogenic + splicing-related consequences and
+negatives to benign + intronic consequences. With Exp 012, COL4A5 was
+added as the 7th filtered gene; with Exp 015 (this report), FBN1 is
+the 8th filtered gene, scored on the same apples-to-apples protocol
+and representing the first connective-tissue / fibroblast biology in
+the benchmark. See `research_notebook/experiments/008_kcnq2_benchmark/README.md`
+for KCNQ2 details and an apples-to-apples re-analysis.
 
 † COL4A5 was scored twice (Exp 012): the *unfiltered* row uses all
 pathogenic vs all benign (mirrors KCNQ2's primary protocol). The
@@ -65,14 +67,21 @@ pathogenic vs all benign (mirrors KCNQ2's primary protocol). The
 apples-to-apples protocol (pathogenic + splice-donor/acceptor/region vs
 benign + intronic). See `research_notebook/experiments/012_col4a5_benchmark/README.md`.
 
+‡ FBN1 was scored twice (Exp 015): the *filtered* row uses
+apples-to-apples (pathogenic + splice-donor/acceptor/region vs
+benign + intronic); the *FBN1‡* row uses the unfiltered protocol
+(all pathogenic vs all benign), mirroring KCNQ2 / COL4A5. See
+`research_notebook/experiments/015_fbn1_benchmark/README.md`.
+
 ## Interpretation
 
-- **Best performer (filtered):** MECP2 (AUPRC=1.0000)
+- **Best performer (filtered):** MECP2 (AUPRC=1.0000), tied with FBN1 SPLICE_SITES (AUPRC=0.9997)
 - **Worst performer (filtered):** SCN1A (AUPRC=0.9830)
-- **Mean AUPRC across the 6 filtered genes (incl. COL4A5):** 0.9944
-- **Std AUPRC across the 6 filtered genes (incl. COL4A5):** 0.0066
+- **Mean AUPRC across the 7 filtered genes (incl. FBN1, SPLICE_SITES):** 0.9952
+- **Std AUPRC across the 7 filtered genes (incl. FBN1, SPLICE_SITES):** 0.0069
 - **KCNQ2 (unfiltered):** AUPRC=0.5657 — see Exp 008 for context.
 - **COL4A5 (unfiltered):** AUPRC=0.6180 — see Exp 012 for context.
+- **FBN1 (unfiltered):** AUPRC=0.5057 — see Exp 015 for context.
 
 ### Notes
 
@@ -100,3 +109,20 @@ benign + intronic). See `research_notebook/experiments/012_col4a5_benchmark/READ
   within pathogenic) but still far below 0.95 — i.e. the splice scorers
   are **mechanism-specific**, not generic pathogenicity classifiers,
   even on chrX and even on basement-membrane collagen biology.
+- **FBN1** (n_pos=100, filtered): AUPRC 0.970–1.000 across the 3 splice
+  scorers. This is the **8th gene** in the benchmark, the largest by
+  locus size (~237 kb, 65 exons) and the first in **connective-tissue /
+  fibroblast** biology (Marfan syndrome and related fibrillinopathies).
+  Even though FBN1 is much larger than CFTR and almost 2× larger than
+  SCN1A, the 16 Kb SPLICE_SITES / SPLICE_JUNCTIONS / SPLICE_SITE_USAGE
+  scorers still perfectly separate the splice-pathogenic mechanism from
+  benign intronic — confirming the model is **position-invariant within
+  a 16 Kb window** at single-exon scale. Unfiltered AUPRC = 0.506
+  (lower than KCNQ2's 0.566 and COL4A5's 0.618, consistent with FBN1
+  having the largest missense/nonsense share among the 8 genes:
+  1535/2369 ≈ 65% missense + 452/2369 ≈ 19% nonsense; only ~14%
+  canonical splice). Top-5% precision stays ≥ 0.93 in the unfiltered
+  protocol, again confirming the high-score tail is enriched for
+  pathogenic variants regardless of label composition.
+  Connective-tissue / fibroblast biology is a **new tissue class** in
+  this benchmark and the pattern still holds.
