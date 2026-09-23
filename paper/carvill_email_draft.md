@@ -16,13 +16,13 @@ SCN1A VUS — 2 ranked candidates ready for minigene validation (1-page attached
 
 Dr. Carvill,
 
-I'm currently completing an MSc in Genomics and Bioinformatics at the Chinese University of Hong Kong (CUHK), with a prior MSc in Applied Data Science from the University of Michigan. As part of my bioinformatics research training, I've re-scored all 1,610 SCN1A VUS in ClinVar with AlphaGenome and ranked the top 17 by 3 orthogonal evidence types (chromatin similarity to known pathogenic patterns, brain RNA-seq effect, splice-site proximity). My top 2 candidates for your published Sparber 2023 minigene assay are **rs801806** (cosine 0.24 to known path patterns, splice acceptor disruption, exon 16) and **rs4293437** (9× stronger brain RNA-seq LFC, splice acceptor, exon 4).
+I'm currently completing an MSc in Genomics and Bioinformatics at the Chinese University of Hong Kong (CUHK), with a prior MSc in Applied Data Science from the University of Michigan. As part of my bioinformatics coursework and self-directed research, I've re-scored all 1,610 SCN1A VUS in ClinVar with AlphaGenome and ranked the top 17 by 3 orthogonal evidence types (chromatin similarity to known pathogenic patterns, brain RNA-seq effect, splice-site proximity). My top 2 candidates for your published Sparber 2023 minigene assay are **rs801806** (cosine 0.24 to known path patterns, splice acceptor disruption, exon 16) and **rs4293437** (9× stronger brain RNA-seq LFC, splice acceptor, exon 4).
 
 The attached 1-page brief has the full ranking, mechanism hypotheses, AlphaGenome scores, and gnomAD data. None of the 4 Tier-1 candidates have published functional data.
 
 If your lab is open to running the minigene assay on rs801806 and rs4293437, I'd appreciate a quick reply with your thoughts on feasibility and timeline. I'm happy to do follow-up work (additional AlphaGenome scoring, candidate ranking) and would value co-authorship on any resulting publication.
 
-No funding requested — this is part of my research training. If helpful, my current program coordinator is happy to discuss potential collaboration.
+No funding requested — this is self-directed work as part of my bioinformatics training.
 
 Best regards,  
 Royce Lam  
@@ -33,54 +33,55 @@ github.com/rollroyces/alphagenome-scn1a-pipeline
 
 ---
 
-## What this version is honest about
+## What changed in this version
 
-| Disclosed | Not disclosed |
-|---|---|
-| CUHK MSc candidate (verifiable) | Pretending to have PI |
-| Michigan MADS (verifiable) | Pretending to have funding |
-| Currently studying (true) | Pretending to be faculty |
-| Part of research training (true) | Pretending to have institutional support |
-| Follow-up work offered (true) | Pretending to have grants |
+**Removed:**
+- "If helpful, my current program coordinator is happy to discuss potential collaboration" → you don't have one (taught degree)
 
-## What changed from earlier versions
+**Changed:**
+- "as part of my bioinformatics research training" → "as part of my bioinformatics coursework and self-directed research" → more honest, no research project requirement
 
-**Before (wrong):**
-- "Graduate student in genomics and bioinformatics at CUHK" → implied ongoing enrollment, no specific program
-- "Working under supervision of [PI]" → you don't have one yet
-- "Independent researcher" → no institutional backing at all
+## Why "taught degree" matters
 
-**Now (accurate):**
-- "MSc candidate, Genomics and Bioinformatics, CUHK" → precise, verifiable, current student
-- "MSc Applied Data Science, University of Michigan" → exact program name
-- "Part of my research training" → honest framing
-- "My current program coordinator" → soft offer of academic backing without lying about PI
+A taught MSc has:
+- ✗ No research project/thesis
+- ✗ No supervisor
+- ✗ No PI
+- ✗ No "lab"
 
-## What this version signals to Carvill
+A research MSc has:
+- ✓ Supervisor (PI)
+- ✓ Lab placement
+- ✓ Thesis requirement
 
-1. **Trained bioinformatician** — Michigan MADS + CUHK bioinformatics = real computational chops
+**Carvill will assume research MSc if you say "research training."** Removing that ambiguity makes you sound like a taught MSc grad doing self-directed work — which is honest.
+
+## What this signals to Carvill (corrected)
+
+1. **Trained bioinformatician** — Michigan MADS + CUHK MSc = real computational chops
 2. **Currently enrolled** — verifiable student status
-3. **No PI yet** — honest about independence
-4. **Willing helper** — offers follow-up work
-5. **No funding** — pure scientific exchange
-6. **Recent graduate** — Michigan MADS suggests 2023-2024 grad, CUHK current student
+3. **Self-directed** — does computational work on his own (suggests initiative)
+4. **Coursework-based** — taught degree, not research project (honest framing)
+5. **No PI / no funding** — pure scientific exchange
+6. **Recent graduate** — Michigan MADS suggests 2024 grad, CUHK current student
 
-## Why Michigan MADS helps
+## What to verify before sending
 
-- US top-10 public university
-- MADS is a real, established program (Google-able)
-- Signals serious computational training
-- Different from typical "data scientist from bootcamp"
-- Complements the bioinformatics angle perfectly
+| Claim in email | Verify |
+|---|---|
+| "MSc in Genomics and Bioinformatics" | **Check this is your actual program name at CUHK** |
+| "Chinese University of Hong Kong" | ✓ |
+| "MSc Applied Data Science from University of Michigan" | ✓ MADS |
+| "Currently completing" | True if enrolled now |
 
-## If your current school is NOT CUHK
+## If your CUHK program has a different name
 
-Tell me the actual school and program name. I'll re-draft in 30 seconds.
+CUHK has several programs that could fit "Genomics and Bioinformatics":
+- MSc in Genomics and Bioinformatics (School of Biomedical Sciences, Faculty of Medicine)
+- MSc in Bioinformatics (other department?)
+- MSc in Genome Analytics (if exists)
 
-For example:
-- "HKU MSc in Genomics" → just change the name
-- "HKUST MSc in Bioinformatics" → just change the name
-- "Michigan continuing for bioinformatics" → change CUHK to Michigan
+**Tell me the exact name on your transcript / student ID.**
 
 ---
 
