@@ -1,7 +1,7 @@
 # Cross-Disease AlphaGenome Benchmark — Results
 
 SPLICE_SITES scores from AlphaGenome for pathogenic splicing variants vs. benign intronic variants
-across 6 rare disease genes (5 filtered + KCNQ2 unfiltered in the
+across 8 rare disease genes (5 filtered + KCNQ2 unfiltered in the
 original report; with Exp 012 the benchmark now spans 6 filtered genes
 including COL4A5). Higher AUPRC = better discrimination.
 
@@ -15,8 +15,10 @@ including COL4A5). Higher AUPRC = better discrimination.
 || COL4A5 | 376 | 176 | 200 | 0.9966 | 0.9969 | [0.992, 1.000] | 1.000 |
 || SCN2A | 230 | 30 | 200 | 0.9980 | 0.9880 | [0.965, 1.000] | 1.000 |
 || SCN1A | 430 | 120 | 310 | 0.9940 | 0.9830 | [0.964, 0.996] | 1.000 |
+|| FBN1 | 300 | 100 | 200 | 0.9999 | 0.9997 | [0.999, 1.000] | 1.000 |
 || KCNQ2* | 550 | 200 | 350 | 0.6713 | 0.5657 | [0.501, 0.634] | 0.929 |
 || COL4A5† | 550 | 200 | 350 | 0.6577 | 0.6180 | [0.559, 0.676] | 1.000 |
+|| FBN1‡ | 550 | 200 | 350 | 0.5646 | 0.5057 | [0.440, 0.568] | 1.000 |
 
 ## SPLICE_SITE_USAGE
 
@@ -28,8 +30,10 @@ including COL4A5). Higher AUPRC = better discrimination.
 || COL4A5 | 376 | 176 | 200 | 1.0000 | 1.0000 | [1.000, 1.000] | 1.000 |
 || SCN1A | 430 | 120 | 310 | 0.9875 | 0.9643 | [0.939, 0.984] | 1.000 |
 || SCN2A | 230 | 30 | 200 | 0.9925 | 0.9561 | [0.904, 0.990] | 1.000 |
+|| FBN1 | 300 | 100 | 200 | 0.9992 | 0.9984 | [0.994, 1.000] | 1.000 |
 || KCNQ2* | 550 | 200 | 350 | 0.6555 | 0.5633 | [0.500, 0.628] | 0.929 |
 || COL4A5† | 550 | 200 | 350 | 0.6657 | 0.6307 | [0.570, 0.690] | 1.000 |
+|| FBN1‡ | 550 | 200 | 350 | 0.5809 | 0.5119 | [0.450, 0.571] | 1.000 |
 
 ## SPLICE_JUNCTIONS
 
@@ -41,8 +45,10 @@ including COL4A5). Higher AUPRC = better discrimination.
 || SCN2A | 230 | 30 | 200 | 0.9922 | 0.9640 | [0.916, 1.000] | 1.000 |
 || SCN1A | 430 | 120 | 310 | 0.9811 | 0.9176 | [0.861, 0.976] | 0.955 |
 || DMD | 600 | 200 | 400 | 0.8964 | 0.9129 | [0.886, 0.945] | 1.000 |
+|| FBN1 | 300 | 100 | 200 | 0.9883 | 0.9695 | [0.927, 0.997] | 1.000 |
 || KCNQ2* | 550 | 200 | 350 | 0.6806 | 0.5930 | [0.522, 0.658] | 0.929 |
 || COL4A5† | 550 | 200 | 350 | 0.6603 | 0.6190 | [0.560, 0.677] | 1.000 |
+|| FBN1‡ | 550 | 200 | 350 | 0.5955 | 0.5132 | [0.450, 0.577] | 0.929 |
 
 \* KCNQ2 was scored with **no molecular-consequence filter** — positives are
 all pathogenic SNVs and negatives are all benign SNVs (per Exp 008 protocol).
