@@ -9,19 +9,16 @@ Experiment 002 (SCN1A, n=10+10) found Mann-Whitney U p=0.006 for the
 fraction of DNase ISM magnitude concentrated within +/-5bp of the variant,
 comparing 10 highest-scoring pathogenic vs 10 lowest-scoring benign SNVs.
 
-Experiment 003 (DMD + CFTR, n=8/7+10) replicated and got p=0.137 (DMD) and
-p=0.594 (CFTR), combined p=0.376, Fisher meta p=0.286. The Exp 002 finding
-failed to replicate.
+Experiment 003 (DMD + CFTR, n=8/7+10) tried to replicate and got p=0.137
+(DMD), p=0.594 (CFTR), combined p=0.376, Fisher meta p=0.286. We initially
+interpreted this null as evidence that Exp 002 was a Type-I error.
 
-Two interpretations:
-  (a) Exp 002 was a Type-I error inflated by small n (n=10 is fragile).
-  (b) The DNase effect is real but weak; n=10 is too small to detect it on
-      genes where pathogenic set is dominated by splice variants.
-
-We test (b) here by going to n=30+30 per gene on DMD, CFTR, AND SCN1A
-(180 pathogenic + 180 benign variants total). If the DNase concentration
-direction still doesn't replicate at this larger n, we conclude it was a
-statistical artifact (interpretation (a) wins by exclusion).
+This experiment re-tests the question at higher n: was Exp 002 a Type-I
+error, or was the n=10 effect real but underpowered for replication at
+n=8/7? At n=30+30 per gene (180 pathogenic + 180 benign), the result is
+unambiguous: the DNase concentration effect IS real (combined p=7.99e-7,
+r=+0.467, Fisher meta p=3.16e-6). Exp 003's null was an underpowered false
+negative. See README for full interpretation.
 
 Approach
 --------

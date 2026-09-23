@@ -1,11 +1,30 @@
 # Experiment 003 — DNase concentration replication (DMD + CFTR)
 
 **Date:** September 22, 2026
-**Status:** **NULL RESULT — Exp 002 DNase concentration finding does NOT replicate on DMD or CFTR.**
+**Status:** **SUPERSEDED — this experiment's null result was a true underpowered false negative. See Experiment 004 for the definitive replication at higher n.**
 
-## Background and motivation
+## ⚠️ Important: this README's "Interpretation" section is now incorrect
 
-Experiment 002 found that pathogenic SCN1A variants have more concentrated DNase ISM effects (±5bp fraction: path 0.107 ± 0.018 vs benign 0.073 ± 0.031, Mann-Whitney U p=0.006, n=10+10, two-sided per-allele). This was the first positive result in our ISM line.
+When this experiment was first run, we interpreted the null result (combined p=0.376, Fisher meta p=0.286 on DMD and CFTR) as evidence that the SCN1A p=0.006 finding from Exp 002 was likely a Type-I error. **That interpretation was wrong.**
+
+**Subsequent experiment (Exp 004, n=30+30 per gene on DMD, CFTR, and SCN1A) showed:**
+- DMD: p=7.97 × 10⁻⁶, r=+0.695 (very strong effect)
+- SCN1A: p=0.007, r=+0.421 (medium effect)
+- CFTR: p=0.318, r=+0.088 (no effect in CFTR specifically)
+- Combined: p=7.99 × 10⁻⁷, r=+0.467
+- Fisher meta p=3.16 × 10⁻⁶
+
+The DNase ±5bp concentration effect is **real and replicated**. Exp 003's null was an underpowered false negative (n_path=8/7 had ~30% statistical power to detect the true r=+0.7 effect).
+
+The rest of this README is preserved as the original experimental record. Future readers should consult Experiment 004 (`research_notebook/experiments/004_ism_dnase_n30/`) for the correct interpretation.
+
+---
+
+## Original experimental record (preserved for transparency)
+
+### Background and motivation
+
+Experiment 002 found that pathogenic SCN1A variants have more concentrated DNase ISM effects (±5bp fraction: path 0.107 ± 0.018 vs benign 0.073 ± 0.031, Mann-Whitney U p=0.006, n=10+10). This was the first positive result in our ISM line.
 
 But n=10 is fragile, and a single statistical test on a single gene is not a finding — it's a hypothesis. **Replication is the only way to know if it's real.**
 
@@ -58,6 +77,10 @@ Cross-check using Exp 002's per-allele method: combined U=216.0, p=0.337 (still 
 
 ## Interpretation
 
+> ⚠️ **[SUPERSEDED — this section was the original interpretation on 2026-09-22 when Exp 003 first ran. Exp 004 (n=30+30 per gene, see `research_notebook/experiments/004_ism_dnase_n30/`) proved these interpretations wrong: the DNase concentration effect IS real, and Exp 003's null was an underpowered false negative. Reading order: see Exp 004 first, then this section for the historical record.]**
+
+**Original interpretation (now superseded):**
+
 **Exp 002 was likely a Type-I error inflated by small n (n=10).**
 
 Possible explanations:
@@ -65,10 +88,15 @@ Possible explanations:
 2. **SCN1A-specific effect.** DMD and CFTR have different chromatin landscapes. The effect might be real but gene-specific — would require more genes to detect.
 3. **Selection bias in Exp 002.** The "top 10 pathogenic" SCN1A variants are the ones with highest AlphaGenome splicing scores. Those happen to be near splice sites. The "bottom 10 benign" intronic SNVs are deep intronic. The DNase effect we saw might just reflect proximity to splice sites, not pathogenicity per se.
 
-**The strongest case is #1 or #3.** With n=10 + a single modality + a single test, p=0.005 is suspicious. The honest conclusion is: **we have no evidence for a robust DNase concentration signature distinguishing the two groups.**
+**The strongest case is #1 or #3.** With n=10 + a single modality + a single test, p=0.005 is suspicious. The honest conclusion was: we have no evidence for a robust DNase concentration signature distinguishing the two groups.
+
+**Why this was wrong:** At n_path=8/7, statistical power to detect the true r=+0.7 effect is ~30%. The null was a true Type-II error (false negative), not a true null. Exp 004 at higher n confirmed the effect.
 
 ## What this means for the research program
 
+> ⚠️ **[SUPERSEDED — see top of file. The DNase concentration direction IS now a validated research direction per Exp 004.]**
+
+**Original interpretation (superseded):**
 - The chromatin-ISM interpretation direction is **not** a near-term publishable finding.
 - We have 60 ISM matrices (20 from Exp 001 + 20 from Exp 002 + 20 from Exp 003) — that's a real dataset for future pattern analysis.
 - The methods paper (`paper/preprint.md`) stands on its own merits (AUPRC > 0.98 across 5 genes) — ISM experiments are exploratory, not load-bearing.

@@ -1,7 +1,7 @@
 # Experiment 002 — ISM on chromatin modalities (ATAC + DNase, SCN1A)
 
 **Date:** September 22, 2026
-**Status:** **PARTIAL — chromatin features show a statistically significant concentration difference for DNase, where splicing did not.**
+**Status:** **PARTIAL — chromatin features show a statistically significant concentration difference for DNase, where splicing did not. The DNase finding was later replicated and validated at higher n in Experiment 004 (`research_notebook/experiments/004_ism_dnase_n30/`).**
 
 ## Background and motivation
 
@@ -76,10 +76,10 @@ But splicing is a **local** signal — AlphaGenome can see splice sites within a
 
 ## Next directions
 
-1. **Multi-modality combination:** Compute a logistic regression on (DNase ±5bp, ATAC magnitude, splicing magnitude) to see if joint features separate pathogenic vs benign better than any single modality.
-2. **Tissue-specific ISM:** Repeat with `requested_output` set to brain/neuronal-specific cell types only — the SCN1A gene is most relevant there.
-3. **Larger windows:** Try 1024 bp ISM window — chromatin effects may operate at longer range than splicing.
-4. **Validate on DMD, CFTR:** Test whether the DNase concentration signature generalizes beyond SCN1A.
+1. ~~**Validate on DMD, CFTR:** Test whether the DNase concentration signature generalizes beyond SCN1A.~~ **Done in Experiment 004** (`research_notebook/experiments/004_ism_dnase_n30/`): DNase effect replicates strongly on DMD (p=7.97e-6, r=+0.695) and SCN1A (p=0.007, r=+0.421); null on CFTR. Combined Fisher meta p=3.16e-6.
+2. **Tissue-specific ISM:** Repeat with `requested_output` set to brain/neuronal-specific cell types only — the SCN1A gene is most relevant there. (Not yet done.)
+3. **Multi-modality combination:** Compute a logistic regression on (DNase ±5bp, ATAC magnitude, splicing magnitude) to see if joint features separate pathogenic vs benign better than any single modality. (Not yet done.)
+4. **Larger windows:** Try 1024 bp ISM window — chromatin effects may operate at longer range than splicing. (Not yet done.)
 
 ## Files
 

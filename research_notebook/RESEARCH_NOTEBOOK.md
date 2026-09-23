@@ -82,7 +82,9 @@ See `research_notebook/experiments/002_ism_atac/README.md`.
 **Tested:** Whether the DNase ±5bp concentration difference from Exp 002 (SCN1A,
 p=0.006) replicates on DMD and CFTR.
 
-**Result:** **NULL — does not replicate.**
+**Result at time of running (now superseded by Exp 004):** *NULL — does not replicate.*
+
+**Current understanding (see Exp 004 entry below):** the null was a true underpowered false negative. Exp 004 at n=30+30 per gene showed the DNase concentration effect IS real (combined p=7.99e-7, r=+0.467). Exp 003's null was a Type-II error.
 
 | Gene | path ±5bp | benign ±5bp | p-value |
 |---|---|---|---|
