@@ -9,10 +9,15 @@
 
 ## Bottom line
 
-We have ranked the 4 Tier-1 SCN1A splice-region VUS by predicted wet-lab testability. If you can run **2 variants** this cycle, we recommend:
+We have ranked the 4 Tier-1 SCN1A splice-region VUS by predicted wet-lab testability. Two independent analyses (Exp 013 splicing+chromatin, Exp 014 brain RNA-seq) give different rankings:
 
-1. **rs801806** (chr2:g.166041471 T>A) — highest predicted testability score across all signals
-2. **rs4293437** (chr2:g.166073671 C>G) — second highest; both disrupt canonical 3′ss acceptor sites of multi-exonic SCN1A exons
+**If budget allows 2 variants**, the strongest combined case is for testing **both**:
+- **rs801806** — strongest splicing/chromatin signature (Exp 013: cosine to known pathogenic = 0.238, SPLICE_SITES = 1.14)
+- **rs4293437** — strongest predicted brain expression impact (Exp 014: 28.6 brain RNA_SEQ, 9× stronger than rs801806, 14/27 brain tracks above |1.0|)
+
+**If you can only run 1**, the recommendation depends on what you want to learn:
+- For "what predicts strongest Dravet-relevant expression loss": **rs4293437** (Exp 014 winner)
+- For "what looks most like known pathogenic splicing variants": **rs801806** (Exp 013 winner)
 
 If you can run **3 or 4**, add **rs2847163** (5′ss donor disruption in canonical exon 14 — most likely to show exon skipping).
 
