@@ -188,6 +188,30 @@ The Exp 003 null was an underpowered false negative: with n_path=8/7, statistica
 
 **Negative result for hypothesis 1, positive result for hypothesis 2.** Full data and analysis: `research_notebook/experiments/001_ism_scn1a/`, `research_notebook/experiments/004_ism_dnase_n30/`.
 
+### 3.8 Tissue-specific scoring (does it beat averaged?)
+
+We tested whether tissue-specific AlphaGenome tracks outperform averaged tracks for pathogenic vs benign classification. We ran two independent scorers:
+
+- **SPLICE_JUNCTIONS** (Exp 005): 5 genes × 2 conditions. Wilcoxon on AUPRC deltas: p=0.19 (n.s.). Mean Δ = −0.0004 (tissue slightly worse).
+- **DNASE** (Exp 006): 2 genes × 2 conditions. For SCN1A: brain-filtered (20 tracks) gives a small win over averaged (305 tracks) on max-abs (r=+0.642 vs +0.550, p=9.98e-06 vs 1.50e-04). For DMD: muscle-filtered (15 tracks) is essentially tied with averaged (r=+0.882 vs +0.878).
+
+**Conclusion across both scorers:** Tissue-specific track filtering does not consistently beat averaged tracks for Mendelian pathogenic-vs-benign classification. Two independent scorers, two different sample sizes, same null/mixed finding.
+
+The averaged 305-track DNASE (and 367-track SPLICE_JUNCTIONS) panel is already a strong baseline; the tissue-relevant tracks are already represented in the average, and the additional ~285 non-tissue tracks likely act as a regularizer rather than noise. For clinically tractable variant scoring, the simplest approach (averaged across all tracks) is competitive with tissue-filtered approaches.
+
+### 3.9 Multivariate combination (does it beat single features?)
+
+We tested whether combining multiple ISM features (DNase ±5bp, ±15bp, magnitude; ATAC ±5bp, magnitude; splicing ±5bp, magnitude) in a logistic regression outperforms the best single feature (DNase ±5bp concentration) on a cross-validated test set. Using 5-fold stratified CV on n=147 variants across SCN1A/DMD/CFTR:
+
+| Model | AUROC | AUPRC |
+|---|---|---|
+| Multivariate (15 features) | 0.788 ± 0.103 | 0.766 ± 0.108 |
+| Multivariate (DNase only, 5 features) | 0.776 ± 0.089 | 0.748 ± 0.096 |
+| **Best single (DNase frac_5bp)** | **0.736 ± 0.071** | **0.694 ± 0.083** |
+| Random baseline | 0.515 ± 0.048 | 0.488 ± 0.081 |
+
+**Conclusion:** Multivariate gives +0.07 AUPRC over best single feature, but the lift is **smaller than one cross-fold standard deviation** (0.108). The multivariate does not clearly beat the best single feature on this dataset. DNase features dominate the model; ATAC and splicing carry near-chance signal individually and contribute little to the multivariate model. The simplest model (single DNase ±5bp concentration) is competitive with a 15-feature logistic regression.
+
 ---
 
 ## 4. Discussion
