@@ -1,0 +1,79 @@
+======================================================================
+Experiment 009 — DNASE re-scoring of SCN1A VUS
+======================================================================
+Loaded 1,610 VUS from outputs/vus_rescored.csv
+Creating dna_model client...
+  [1/1610] 0s elapsed, success=0, fail=0, ETA 1s
+  [51/1610] 18s elapsed, success=50, fail=0, ETA 541s
+  [101/1610] 35s elapsed, success=100, fail=0, ETA 517s
+  [151/1610] 50s elapsed, success=150, fail=0, ETA 485s
+  [201/1610] 65s elapsed, success=200, fail=0, ETA 458s
+  [251/1610] 82s elapsed, success=250, fail=0, ETA 443s
+  [301/1610] 97s elapsed, success=300, fail=0, ETA 421s
+  [351/1610] 113s elapsed, success=350, fail=0, ETA 405s
+  [401/1610] 129s elapsed, success=400, fail=0, ETA 388s
+  [451/1610] 144s elapsed, success=450, fail=0, ETA 370s
+  [501/1610] 160s elapsed, success=500, fail=0, ETA 355s
+  [551/1610] 176s elapsed, success=550, fail=0, ETA 338s
+  [601/1610] 192s elapsed, success=600, fail=0, ETA 322s
+  [651/1610] 208s elapsed, success=650, fail=0, ETA 306s
+  [701/1610] 223s elapsed, success=700, fail=0, ETA 290s
+  [751/1610] 239s elapsed, success=750, fail=0, ETA 274s
+  [801/1610] 255s elapsed, success=800, fail=0, ETA 257s
+  [851/1610] 270s elapsed, success=850, fail=0, ETA 241s
+  [901/1610] 286s elapsed, success=900, fail=0, ETA 225s
+  [951/1610] 301s elapsed, success=950, fail=0, ETA 209s
+  [1001/1610] 317s elapsed, success=1000, fail=0, ETA 193s
+  [1051/1610] 332s elapsed, success=1050, fail=0, ETA 177s
+  [1101/1610] 347s elapsed, success=1100, fail=0, ETA 160s
+  [1151/1610] 362s elapsed, success=1150, fail=0, ETA 145s
+  [1201/1610] 378s elapsed, success=1200, fail=0, ETA 129s
+  [1251/1610] 394s elapsed, success=1250, fail=0, ETA 113s
+  [1301/1610] 410s elapsed, success=1300, fail=0, ETA 97s
+  [1351/1610] 426s elapsed, success=1350, fail=0, ETA 82s
+  [1401/1610] 442s elapsed, success=1400, fail=0, ETA 66s
+  [1451/1610] 458s elapsed, success=1450, fail=0, ETA 50s
+  [1501/1610] 474s elapsed, success=1500, fail=0, ETA 34s
+  [1551/1610] 490s elapsed, success=1550, fail=0, ETA 19s
+  [1601/1610] 505s elapsed, success=1600, fail=0, ETA 3s
+  [1610/1610] 508s elapsed, success=1609, fail=0, ETA 0s
+
+DNASE scoring done. 1610/1610 succeeded, 0 failed, total 508s
+
+Summary: scored 1,610/1,610, failed 0 (0.0%), runtime 508s
+Saved full DNASE-augmented file → outputs/vus_rescored_with_dnase.csv (1,610 rows)
+Saved top 30 by DNASE → outputs/vus_top_by_dnase.csv
+Saved top 30 by combined → outputs/vus_top_combined.csv
+
+=== Ranking comparison (top 30) ===
+  Splicing-only top-30: 30 variants
+  Combined top-30:      30 variants
+  Overlap:              27
+  Only in splicing:     3
+  Only in combined:     3
+  Verdict: REDUNDANT — DNASE adds little new signal vs splicing alone.
+
+=== Top 10 by combined ranking ===
+ combined_rank    rsid  chrom       pos ref alt  SPLICE_SITES_score  DNASE_score  combined_score         molecular_consequence
+             1 1412774      2 166047773   A   C            1.537598    24.831841        0.707752                intron_variant
+             2  851265      2 166047622   C   A            1.715332   -15.013060        0.639286                intron_variant
+             3  393000      2 166047622   C   G            1.612854    -8.278484        0.629692                intron_variant
+             4 1046194      2 166013744   C   T            1.521240    -9.997246        0.597729 non-coding_transcript_variant
+             5  408938      2 166046767   T   G            0.973877    41.783745        0.594257                intron_variant
+             6 2746317      2 166013901   G   T            1.494141   -10.235609        0.589090                intron_variant
+             7  853842      2 166036540   A   T            1.506348   -12.000002        0.587325                intron_variant
+             8 2203203      2 166054633   C   T            1.640137   -36.281853        0.553045                intron_variant
+             9 4291800      2 166047773   A   T            1.349609    -8.749368        0.551349                intron_variant
+            10 1329953      2 165999718   C   G            1.355469   -10.273796        0.548454                intron_variant
+
+Saved high-impact + DNASE → outputs/vus_high_impact_with_dnase.csv (61/61 have DNASE_score)
+Saved comparison summary → outputs/vus_combined_vs_splicing.json
+
+======================================================================
+DONE
+======================================================================
+Outputs:
+  outputs/vus_rescored_with_dnase.csv            ← all VUS with DNASE + splicing scores
+  outputs/vus_top_by_dnase.csv       ← top 30 by DNASE only
+  outputs/vus_top_combined.csv    ← top 30 by combined (key artifact)
+  outputs/vus_high_impact_with_dnase.csv      ← 61 high-impact candidates + DNASE

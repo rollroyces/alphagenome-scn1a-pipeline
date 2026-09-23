@@ -1,0 +1,10 @@
+{
+  "n_scored": 1610,
+  "n_failed": 0,
+  "n_total": 1610,
+  "runtime_seconds": 508.0,
+  "overlap_top30": 27,
+  "only_in_splicing_top30": 3,
+  "only_in_combined_top30": 3,
+  "verdict": "REDUNDANT \u2014 DNASE adds little new signal vs splicing alone."
+}

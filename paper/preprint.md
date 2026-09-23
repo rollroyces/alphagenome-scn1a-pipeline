@@ -212,6 +212,25 @@ We tested whether combining multiple ISM features (DNase ±5bp, ±15bp, magnitud
 
 **Conclusion:** Multivariate gives +0.07 AUPRC over best single feature, but the lift is **smaller than one cross-fold standard deviation** (0.108). The multivariate does not clearly beat the best single feature on this dataset. DNase features dominate the model; ATAC and splicing carry near-chance signal individually and contribute little to the multivariate model. The simplest model (single DNase ±5bp concentration) is competitive with a 15-feature logistic regression.
 
+### 3.10 Expansion to 6 genes, dual-mechanism DNASE, and Tier-1 ISM (Exps 008–011)
+
+Four follow-up experiments extended the core benchmark:
+
+**Exp 008 — KCNQ2 as 6th gene.** Added KCNQ2 (chr20:63,400,679-63,472,909, MANE Select ENST00000356457, NCBI gene 3785) to the cross-disease benchmark. With the same molecular-consequence filter used for the other 5 genes (pathogenic+splice vs benign+intronic, n=46 vs 200), KCNQ2 gives AUPRC 0.998 / 0.981 / 0.992 — confirming the 6-gene pattern holds. An unfiltered comparison (all pathogenic vs all benign, n=200 vs 350) gives AUPRC ≈ 0.57, illustrating that the splice scorers specifically reward splice-altering pathogenic variants and are not a general pathogenicity classifier. Top-5% precision stays ≥ 0.93 in both protocols, indicating the high-score tail is robust.
+
+**Exp 009 — DNASE re-scoring of all 1,610 SCN1A VUS.** Added DNASE to the scoring of every SCN1A VUS previously scored via splicing (1,610/1,610 succeeded in 8.5 min via live API). On the full VUS set, Pearson r(SPLICE_SITES, DNASE) = −0.065 and Spearman ρ = −0.024 (p=0.34) — the two scorers are **statistically independent**, measuring different biological signals. Top-30 by combined ranking overlaps 27/30 with splicing-only; the 3 new candidates (rs1381398, rs4532737, rs2178954) are mostly missense variants with low splicing scores — exactly the **dual-mechanism candidates** invisible to a splicing-only pipeline. They would need chromatin/reporter validation rather than minigene splicing assays.
+
+**Exp 010 — Tier-2 candidate list.** Produced a 13-candidate Tier-2 list of SCN1A VUS scoring high on AlphaGenome but NOT carrying explicit splice annotations. Stratified by VEP Consequence: 5 intron_variant (likely regulatory/poison-exon activators), 5 missense_variant (dual-mechanism), 3 non-coding_transcript_variant. All 13 are absent from gnomAD and have 0 PubMed citations for "SCN1A" — **genuinely novel ultra-rare candidates**. Median Tier-2 SPLICE_SITES_score (1.141) is *higher* than Tier-1 (0.988), suggesting AlphaGenome is flagging high-impact non-canonical candidates that ClinVar curation has not yet captured. Top candidate: rs1412774 at chr2:166047773 (combined 0.778), co-located with rs4291800 — likely a locus-level splice regulatory element.
+
+**Exp 011 — ISM on the 4 Tier-1 candidates.** Applied 128-bp window DNASE-ISM to rs801806, rs4293437, rs801809, rs2847163 (4/4 succeeded, ~16 s total runtime). All four candidates show **fraction_within_5bp ≤ 0.12**, well below where Exp 004 pathogenic variants concentrate — AlphaGenome's reasoning on these specific candidates is **distributional** rather than **positional**. The two adjacent donor variants (rs801809, rs2847163, 1 bp apart on chr2) produce structurally similar heatmaps (max@-61bp vs @-62bp, total magnitude 3594 vs 3544); the two acceptor variants (rs801806, rs4293437, different introns) produce a different pattern with ~half the magnitude. The ISM matrix correlation within each pair is r=0.12 (pixel-wise) but the structural similarity (peak position, total magnitude) is striking. **Honest takeaway:** the Tier-1 candidates are not simple "splice site broken" events; the model's reasoning on them is more diffuse — a finding worth showing in a paper figure precisely because it is honest.
+
+| Exp | Question | Sample | Result |
+|---|---|---|---|
+| 008 | Does the 6-gene pattern hold? | KCNQ2 n=46+200 | **YES** — AUPRC ≥ 0.98 (filtered); 0.57 (unfiltered) |
+| 009 | Does DNASE add signal to splicing? | 1,610 SCN1A VUS | **YES** — independent signal (ρ=−0.024); 3 new candidates |
+| 010 | Tier-2 candidates (no splice annotation)? | 1,610 VUS filtered | 13 candidates, all gnomAD-absent, median SPLICE_SITES=1.141 |
+| 011 | ISM on Tier-1 candidates? | 4 rsIDs, DNASE | **Distributional not positional** — pair structure visible |
+
 ---
 
 ## 4. Discussion

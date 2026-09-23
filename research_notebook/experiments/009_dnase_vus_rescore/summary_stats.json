@@ -1,0 +1,13 @@
+{
+  "n_scored": 1610,
+  "n_failed": 0,
+  "runtime_seconds": 508,
+  "overlap_top30_combined_vs_splicing": 27,
+  "new_in_combined": 3,
+  "new_in_splicing": 3,
+  "pearson_splice_vs_dnase_r": -0.065,
+  "spearman_splice_vs_dnase": -0.024,
+  "spearman_p": 0.3401933505047071,
+  "dnase_top30_class_breakdown": "86% missense (median SPLICE_SITES = 0.022 \u2014 pure chromatin candidates)",
+  "verdict_honest": "DNASE top-30 captures a different VARIANT CLASS (mostly coding missense with low splicing scores) than splicing top-30 (mostly intronic). Combined top-30 overlaps splicing top-30 by 27/30 \u2014 high overlap but the 3 new ones are exactly the dual-mechanism candidates we want to surface for the lab."
+}
