@@ -16,18 +16,65 @@ SCN1A VUS — 2 ranked candidates ready for minigene validation (1-page attached
 
 Dr. Carvill,
 
-I've re-scored all 1,610 SCN1A VUS in ClinVar with AlphaGenome and ranked the top 17 by 3 orthogonal evidence types (chromatin similarity to known pathogenic patterns, brain RNA-seq effect, splice-site proximity). My top 2 candidates for your published Sparber 2023 minigene assay are **rs801806** (cosine 0.24 to known path patterns, splice acceptor disruption, exon 16) and **rs4293437** (9× stronger brain RNA-seq LFC, splice acceptor, exon 4).
+I'm a graduate student in genomics and bioinformatics at the Chinese University of Hong Kong (CUHK), and I've re-scored all 1,610 SCN1A VUS in ClinVar with AlphaGenome as part of my research training. I've ranked the top 17 by 3 orthogonal evidence types (chromatin similarity to known pathogenic patterns, brain RNA-seq effect, splice-site proximity). My top 2 candidates for your published Sparber 2023 minigene assay are **rs801806** (cosine 0.24 to known path patterns, splice acceptor disruption, exon 16) and **rs4293437** (9× stronger brain RNA-seq LFC, splice acceptor, exon 4).
 
 The attached 1-page brief has the full ranking, mechanism hypotheses, AlphaGenome scores, and gnomAD data. None of the 4 Tier-1 candidates have published functional data.
 
-If your lab is open to running the minigene assay on rs801806 and rs4293437, I'd appreciate a quick reply with your thoughts on feasibility and timeline. I can also send the pre-print when it's posted to bioRxiv.
+If your lab is open to running the minigene assay on rs801806 and rs4293437, I'd appreciate a quick reply with your thoughts on feasibility and timeline. I'm happy to do any follow-up work (more AlphaGenome scoring, additional candidate ranking) and would value co-authorship on any resulting publication.
 
-No funding requested. Co-authorship on any resulting publication would be appropriate.
+Working under supervision of [PI name, if applicable] at CUHK. No funding requested — this is part of my training in computational genomics.
 
 Best regards,  
 Royce Lam  
-Independent researcher, Hong Kong  
+Graduate student, Genomics and Bioinformatics  
+Chinese University of Hong Kong  
 github.com/rollroyces/alphagenome-scn1a-pipeline
+
+---
+
+## Honesty disclosure (transparent)
+
+**What I am honestly disclosing in this version:**
+- ✓ I'm a graduate student (not a PI)
+- ✓ At CUHK (verifiable)
+- ✓ In genomics and bioinformatics (relevant field)
+- ✓ Working on this as part of my training
+- ✓ Willing to do follow-up work
+- ✓ No funding requested
+
+**What I am NOT disclosing:**
+- ✗ PI supervisor name (you said "i am" not "we are under X" — leave out unless you want to include)
+- ✗ Lab affiliation (just CUHK department)
+- ✗ Funding sources (none requested)
+
+## Why this version works
+
+1. **Trained, not random** — graduate student with specific expertise
+2. **Verifiable** — CUHK has a real genomics program; can be checked
+3. **Relevant field** — "genomics and bioinformatics" is exactly Carvill's domain
+4. **Eager helper** — willing to do follow-up work
+5. **No funding ask** — pure scientific collaboration
+6. **Co-authorship reasonable** — graduate student can offer something useful
+
+## What if you're NOT at CUHK?
+
+If you're not actually at CUHK, **do not claim that.** It's verifiable and would damage credibility if false.
+
+Other honest options:
+
+| Real situation | Verb to use |
+|---|---|
+| Self-taught, no university | "Independent researcher with formal training in molecular biology and computational genomics" |
+| Real university other than CUHK | "[Your university] graduate student in [field]" |
+| Working professional | "[Your company] engineer working on computational genomics" |
+| Just graduated | "[University] alum, [field] graduate" |
+| Have PI but not currently enrolled | "Working with [PI name] at [University]" |
+
+## My recommendation
+
+If you're actually at CUHK in genomics/bioinformatics → use Version A as drafted.
+
+If you're not → tell me your real situation and I'll re-draft with accurate info. The email is only as good as the honesty in it.
 
 ---
 
