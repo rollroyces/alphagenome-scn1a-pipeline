@@ -1,8 +1,11 @@
 # SCN1A Tier-1 Candidate Variants — Wet-Lab Actionable Brief
 
 **To:** Carvill lab (Dravet minigene splicing assay)
+
 **From:** AlphaGenome SCN1A VUS triage project
+
 **Date:** 2026-09-23
+
 **Re:** Prioritization of 4 splice-region SCN1A VUS for minigene validation
 
 ---
@@ -25,12 +28,12 @@ If you can run **3 or 4**, add **rs2847163** (5′ss donor disruption in canonic
 
 ## Ranking by predicted testability
 
-| Rank | rsID | mol_cons | AlphaGenome SPLICE_SITES | Closest splice site (canonical) | Mean cosine to 30 pathogenic | gnomAD |
-|------|------|----------|-------------------------|----------------------------------|------------------------------|--------|
-| 1 | rs801806 | `splice_acceptor_variant` | 1.1406 | 3'ss (acceptor) @ 2 bp (exon 16) | 0.238 (max 0.392) | present (AF≈0.0) |
-| 2 | rs4293437 | `splice_acceptor_variant` | 1.0547 | 3'ss (acceptor) @ 1 bp (exon 4) | 0.161 (max 0.232) | absent |
-| 3 | rs2847163 | `splice_donor_variant` | 0.9150 | 5'ss (donor) @ 33 bp (exon 14) | 0.058 (max 0.141) | absent |
-| 4 | rs801809 | `splice_donor_variant` | 0.9213 | 5'ss (donor) @ 32 bp (exon 14) | 0.043 (max 0.120) | absent |
+| Rank | rsID | Consequence | SPLICE_SITES | Closest splice site (canonical) | Cosine (mean / max) | gnomAD |
+|------|------|-------------|--------------|----------------------------------|---------------------|--------|
+| 1 | rs801806 | splice_acceptor | 1.1406 | 3'ss @ 2 bp (exon 16) | 0.238 / 0.392 | present (AF~0) |
+| 2 | rs4293437 | splice_acceptor | 1.0547 | 3'ss @ 1 bp (exon 4) | 0.161 / 0.232 | absent |
+| 3 | rs2847163 | splice_donor | 0.9150 | 5'ss @ 33 bp (exon 14) | 0.058 / 0.141 | absent |
+| 4 | rs801809 | splice_donor | 0.9213 | 5'ss @ 32 bp (exon 14) | 0.043 / 0.120 | absent |
 
 ---
 
