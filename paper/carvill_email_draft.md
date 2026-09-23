@@ -20,7 +20,7 @@ I've re-scored all 1,610 SCN1A VUS in ClinVar with AlphaGenome and ranked the to
 
 The attached 1-page brief has the full ranking, mechanism hypotheses, AlphaGenome scores, and gnomAD data. None of the 4 Tier-1 candidates have published functional data.
 
-Would a 15-minute Zoom work to discuss whether these are testable in your lab? I can also send the pre-print when it's posted to bioRxiv.
+If your lab is open to running the minigene assay on rs801806 and rs4293437, I'd appreciate a quick reply with your thoughts on feasibility and timeline. I can also send the pre-print when it's posted to bioRxiv.
 
 No funding requested. Co-authorship on any resulting publication would be appropriate.
 

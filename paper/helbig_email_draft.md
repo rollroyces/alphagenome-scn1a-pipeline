@@ -28,7 +28,8 @@ All ultra-rare in gnomAD, none have published functional validation, all have ex
 Would your clinical genomics team be open to:
 1. Adding these to your tier-2 reclassification queue?
 2. Forwarding to a collaborating wet-lab for minigene validation?
-3. Discussing in a 30-min Zoom?
+
+A short reply with thoughts on either is all I'd need. No Zoom required.
 
 1-page brief attached. No funding requested.
 

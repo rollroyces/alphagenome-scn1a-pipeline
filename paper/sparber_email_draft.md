@@ -25,7 +25,7 @@ We've identified 4 SCN1A VUS candidates using AlphaGenome that match the same va
 
 All 4 are gnomAD-absent or ultra-rare, none have published functional validation. The attached lab brief has the full mechanism analysis, cosine-similarity-to-known-pathogenic values, and AlphaGenome splice signature data.
 
-Would your lab be open to extending the 2023 minigene protocol to these? Co-authorship appropriate. Happy to do a 30-min Zoom to discuss.
+Would your lab be open to extending the 2023 minigene protocol to these? Co-authorship appropriate. A short reply with feasibility and timeline is all I'd need.
 
 Best regards,  
 Royce Lam  
