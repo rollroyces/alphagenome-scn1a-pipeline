@@ -1,0 +1,15 @@
+# CODEOWNERS — default reviewers for the repo.
+# Matched by GitHub from the most specific rule (last match wins).
+# One GitHub handle per line; comment with the area of ownership.
+
+# Catch-all: require review from the maintainer on every change.
+*                          @rollroyces
+
+# Per-experiment scripts are domain-sensitive (biology + statistics).
+# The maintainer is the only reviewer, but file these rules so future
+# contributors can add their handles when they take ownership of a
+# specific experiment.
+# /research_notebook/experiments/001_ism_scn1a/        @rollroyces
+# /research_notebook/experiments/011_ism_tier1/        @rollroyces
+# /research_notebook/experiments/013_tier1_actionable/ @rollroyces
+# /scripts/                                              @rollroyces

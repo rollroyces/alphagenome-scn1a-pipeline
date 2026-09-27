@@ -1,0 +1,96 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow one deploy at a time; cancel superseded runs.
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only run if there is a gh-pages branch to deploy to (turns the workflow
+# into a no-op on repos that have not enabled Pages yet).
+jobs:
+  build-and-deploy:
+    name: Build & deploy docs to GitHub Pages
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Sync dependencies
+        run: uv sync --frozen --extra dev || uv sync --extra dev
+
+      - name: Build site
+        run: |
+          # No mkdocs.yml yet — produce a static index.html that lists the
+          # paper artefacts and links to the README on GitHub. Cheap and
+          # works without additional config. Replace with `mkdocs build
+          # --strict` once we adopt mkdocs.
+          mkdir -p _site
+          cat > _site/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>alphagenome-scn1a — docs</title>
+            <style>
+              body { font-family: -apple-system, system-ui, sans-serif;
+                     max-width: 720px; margin: 4rem auto; padding: 0 1rem;
+                     line-height: 1.5; color: #222; }
+              h1 { border-bottom: 1px solid #ddd; padding-bottom: .25rem; }
+              ul { padding-left: 1.25rem; }
+              code { background: #f4f4f4; padding: 0 .25rem; border-radius: 3px; }
+            </style>
+          </head>
+          <body>
+            <h1>alphagenome-scn1a</h1>
+            <p>Re-scoring ClinVar variants of uncertain significance (VUS) in
+               <em>SCN1A</em> with AlphaGenome to identify novel candidate
+               pathogenic variants for the unsolved fraction of Dravet
+               syndrome.</p>
+            <h2>Docs</h2>
+            <ul>
+              <li><a href="https://github.com/rollroyces/alphagenome-scn1a-pipeline#readme">README</a></li>
+              <li><a href="https://github.com/rollroyces/alphagenome-scn1a-pipeline/tree/main/paper/preprint.md">Preprint draft</a></li>
+              <li><a href="https://github.com/rollroyces/alphagenome-scn1a-pipeline/tree/main/paper/candidate_report.md">Candidate report</a></li>
+              <li><a href="https://github.com/rollroyces/alphagenome-scn1a-pipeline/tree/main/paper/outreach_template.md">Outreach templates</a></li>
+            </ul>
+          </body>
+          </html>
+          EOF
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

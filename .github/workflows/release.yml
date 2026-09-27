@@ -1,0 +1,84 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build the wheel/sdist but do not publish"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write  # required for PyPI trusted publishing (OIDC)
+
+jobs:
+  build:
+    name: Build sdist + wheel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Sync dependencies
+        run: uv sync --frozen --extra dev || uv sync --extra dev
+
+      - name: Build distribution
+        run: |
+          uv run --with build python -m build --outdir dist
+
+      - name: Inspect built artefacts
+        run: ls -lh dist/
+
+      - name: Upload artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    needs: build
+    # Tag-triggered runs publish; manual runs default to dry-run.
+    if: |
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.dry_run == false)
+    environment:
+      name: pypi
+      url: https://pypi.org/p/alphagenome-scn1a
+    steps:
+      - name: Download built artefacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      # Trusted publishing: configure a PyPI publisher for this repo at
+      # https://pypi.org/manage/account/publishing/ — no API token required.
+      # Fall back to PYPI_TOKEN secret if trusted publishing isn't set up.
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          # Skip the API token entirely; trusted publishing handles auth via
+          # the `id-token: write` permission above + the environment.
+          print-hash: true

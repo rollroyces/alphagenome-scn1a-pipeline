@@ -1,10 +1,14 @@
 # AlphaGenome work — rare disease non-coding variant scoring
 
 [![GitHub](https://img.shields.io/badge/GitHub-rollroyces%2Falphagenome--scn1a--pipeline-blue)](https://github.com/rollroyces/alphagenome-scn1a-pipeline)
+[![CI](https://github.com/rollroyces/alphagenome-scn1a-pipeline/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/rollroyces/alphagenome-scn1a-pipeline/actions/workflows/test.yml)
+[![Docs](https://github.com/rollroyces/alphagenome-scn1a-pipeline/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/rollroyces/alphagenome-scn1a-pipeline/actions/workflows/docs.yml)
 
 Re-scoring ClinVar variants of uncertain significance (VUS) in *SCN1A* with [AlphaGenome](https://alphagenome.google) (DeepMind, 2025) to identify novel candidate pathogenic variants for the unsolved fraction of Dravet syndrome.
 
 **Repository:** https://github.com/rollroyces/alphagenome-scn1a-pipeline
+
+**Hugging Face Dataset:** https://huggingface.co/datasets/RROL/scn1a-vus-alphagenome (1,610 SCN1A VUS with AlphaGenome + DNASE scores, CC-BY-4.0)
 
 **Status:** v0.2 — methods paper draft + DNase concentration interpretability finding, 4 Tier-1 candidates ready for outreach.
 

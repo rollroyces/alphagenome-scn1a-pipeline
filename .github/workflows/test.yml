@@ -1,0 +1,118 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Cancel in-flight runs on the same branch/PR when a new commit lands.
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # ---------------------------------------------------------------
+  # 1. Fast structural checks: outputs present + Makefile wired up.
+  # ---------------------------------------------------------------
+  check:
+    name: make check (output presence)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Sync dependencies
+        run: uv sync --frozen --extra dev || uv sync --extra dev
+
+      - name: Verify outputs exist
+        run: make check
+
+  # ---------------------------------------------------------------
+  # 2. Unit tests (no API key required).
+  #    Creates a dummy .alphagenome_key file so test_harness.py
+  #    structural assertions pass on a fresh CI runner.
+  # ---------------------------------------------------------------
+  pytest:
+    name: pytest
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Sync dependencies
+        run: uv sync --frozen --extra dev || uv sync --extra dev
+
+      - name: Create dummy API key file (CI only, never committed)
+        run: |
+          echo "ci_dummy_key_replace_with_real_key_for_local_use_only" > .alphagenome_key
+          chmod 600 .alphagenome_key
+
+      - name: Run pytest
+        run: uv run pytest tests/ -v
+
+  # ---------------------------------------------------------------
+  # 3. Live smoke test against the AlphaGenome API.
+  #    Best-effort: skipped entirely if no secret is configured.
+  # ---------------------------------------------------------------
+  smoke:
+    name: make smoke (live API, requires secret)
+    runs-on: ubuntu-latest
+    needs: pytest
+    # Skip if the API key secret is not set on this repo.
+    if: ${{ secrets.ALPHAGENOME_API_KEY != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Sync dependencies
+        run: uv sync --frozen --extra dev || uv sync --extra dev
+
+      - name: Write API key from secret
+        run: |
+          echo "${{ secrets.ALPHAGENOME_API_KEY }}" > .alphagenome_key
+          chmod 600 .alphagenome_key
+
+      - name: Run smoke test
+        run: make smoke

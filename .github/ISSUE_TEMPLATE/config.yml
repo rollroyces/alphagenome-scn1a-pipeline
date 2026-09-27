@@ -1,0 +1,10 @@
+# Disable GitHub's blank-issue fallback so contributors always pick a template.
+blank_issues_enabled: false
+
+contact_links:
+  - name: Project README
+    url: https://github.com/rollroyces/alphagenome-scn1a-pipeline#readme
+    about: Quickstart, headline results, and project layout.
+  - name: Methods preprint
+    url: https://github.com/rollroyces/alphagenome-scn1a-pipeline/blob/main/paper/preprint.md
+    about: The current draft of the methods paper.
