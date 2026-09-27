@@ -1,0 +1,13 @@
+# Streamlit web UI — SCN1A VUS Re-Scoring (Hugging Face Spaces)
+# --------------------------------------------------------------------------
+# Pinned to versions verified working on this repo as of 2026-09-28.
+# The first 4 are required for HF Spaces (Pages 1-3 render without alphagenome).
+# `alphagenome` is optional and only used on Page 4 (Submit VCF) for live
+# scoring; the app degrades gracefully with a clear error if it's missing.
+streamlit>=1.64
+datasets>=3.0
+pandas>=2.2
+numpy>=1.26
+# Optional — only imported on Page 4 inside a try/except. Uncomment to enable
+# live AlphaGenome scoring in a local install (HF Spaces cannot host the SDK).
+# alphagenome>=1.0

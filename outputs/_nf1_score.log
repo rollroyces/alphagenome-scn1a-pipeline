@@ -1,0 +1,20 @@
+Creating dna_model client...
+
+Smoke test...
+  smoke OK
+
+Building NF1 filtered (apples-to-apples) benchmark...
+  pathogenic+splice available: 501, capped at 100
+  benign+intronic available: 1502, capped at 200
+  Final filtered benchmark: 300 variants (100 pos, 200 neg)
+
+--- filtered run: scoring 300 variants ---
+  [1/300] 0s elapsed, success=0, fail=0, ETA 0s
+  [26/300] 16s elapsed, success=25, fail=0, ETA 167s
+  [51/300] 30s elapsed, success=50, fail=0, ETA 148s
+  [76/300] 44s elapsed, success=75, fail=0, ETA 130s
+  [101/300] 58s elapsed, success=100, fail=0, ETA 114s
+  [126/300] 72s elapsed, success=125, fail=0, ETA 100s
+  [151/300] 86s elapsed, success=150, fail=0, ETA 85s
+  [176/300] 100s elapsed, success=175, fail=0, ETA 71s
+  [201/300] 113s elapsed, success=200, fail=0, ETA 56s

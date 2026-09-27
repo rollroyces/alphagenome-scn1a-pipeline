@@ -1,0 +1,10 @@
+{
+  "dry_run": true,
+  "email_sent": false,
+  "hf_published": false,
+  "n_existing_scored": 1610,
+  "n_indels_skipped": 87,
+  "n_new_snv": 0,
+  "n_new_total": 87,
+  "timestamp_utc": "2026-09-27T23:48:58.318921+00:00"
+}
