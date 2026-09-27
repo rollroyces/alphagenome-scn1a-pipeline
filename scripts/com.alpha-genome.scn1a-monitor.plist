@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Weekly SCN1A VUS monitor.
+
+  Schedule: every Sunday 03:00 local time (HKT on this Mac). The ClinVar
+  release drops early in the week, so Sunday 3am lets the new submissions
+  settle before we re-score.
+
+  Why launchd and not cron / Hermes cronjob:
+  - Bare shell invocation (no LLM reasoning needed)
+  - Must run even when no Hermes session is open
+  - Want explicit stdout/stderr logs to scripts/logs/
+
+  See scripts/MONITOR.md for full install / disable / test instructions.
+
+  Install (run once, from the repo root):
+    mkdir -p scripts/logs
+    cp scripts/com.alpha-genome.scn1a-monitor.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.alpha-genome.scn1a-monitor.plist
+    launchctl list | grep com.alpha-genome.scn1a-monitor    # expect a PID
+
+  Disable (recommended over delete — reversible):
+    launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.alpha-genome.scn1a-monitor.plist
+    mkdir -p ~/Library/LaunchAgents/.disabled
+    mv ~/Library/LaunchAgents/com.alpha-genome.scn1a-monitor.plist \
+       ~/Library/LaunchAgents/.disabled/
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.alpha-genome.scn1a-monitor</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-l</string>
+        <string>/Users/hermes/projects/alphagenome-work/scripts/_run_with_key.sh</string>
+        <string>/Users/hermes/projects/alphagenome-work/scripts/monitor_clinvar.py</string>
+    </array>
+
+    <!-- Sunday 03:00 local time (HKT on this Mac). Week=0 means Sunday in
+         launchd's calendar (0=Sun, 1=Mon, ..., 6=Sat). -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>0</integer>
+        <key>Hour</key>
+        <integer>3</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/hermes/projects/alphagenome-work/scripts/logs/monitor_clinvar.stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/hermes/projects/alphagenome-work/scripts/logs/monitor_clinvar.stderr.log</string>
+
+    <!-- Don't run at load — this job is for the weekly schedule only. -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!-- Rerun if the script exits non-zero or crashes (catches the rare
+         network blip / AlphaGenome transient failure). Bounded retry: if
+         the same script keeps crashing, the wrapper itself exits cleanly
+         after the python invocation finishes, so this is benign. -->
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <!-- Wake the Mac if asleep at 3am, with a 4h grace window. -->
+    <key>Wake</key>
+    <true/>
+    <key>GracePeriod</key>
+    <integer>14400</integer>
+</dict>
+</plist>
