@@ -338,7 +338,8 @@ AlphaGenome's splicing predictions are accurate enough to discriminate pathogeni
 
 - ClinVar VCF: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar_20260913.vcf.gz
 - AlphaGenome API: https://alphagenome.google/api
-- Pipeline code: github.com/rollroyces/alphagenome-scn1a-pipeline (to be released)
+- Pipeline code: github.com/rollroyces/alphagenome-scn1a-pipeline (public)
+- Re-scored VUS dataset: https://huggingface.co/datasets/RROL/scn1a-vus-alphagenome (1,610 SCN1A VUS with AlphaGenome splicing + DNASE scores, gnomAD v4.1 frequencies, tier assignments; CC-BY-4.0)
 
 ## Funding
 

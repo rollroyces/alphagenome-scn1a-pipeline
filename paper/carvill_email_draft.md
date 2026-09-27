@@ -29,7 +29,8 @@ Royce Lam
 MSc candidate, Genomics and Bioinformatics  
 Chinese University of Hong Kong  
 MSc Applied Data Science, University of Michigan  
-github.com/rollroyces/alphagenome-scn1a-pipeline
+github.com/rollroyces/alphagenome-scn1a-pipeline  
+huggingface.co/datasets/RROL/scn1a-vus-alphagenome
 
 ---
 

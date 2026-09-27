@@ -1,0 +1,533 @@
+{
+  "existing_csv": "outputs/vus_rescored_with_dnase.csv",
+  "n_existing_scored": 1610,
+  "n_new": 87,
+  "n_scn1a_vus_total": 1697,
+  "new_variants": [
+    {
+      "alt": "TTTTCA",
+      "chrom": "2",
+      "pos": 165991261,
+      "ref": "T"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165991266,
+      "ref": "ATCT"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 165991302,
+      "ref": "CT"
+    },
+    {
+      "alt": "GT",
+      "chrom": "2",
+      "pos": 165991357,
+      "ref": "G"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 165991395,
+      "ref": "TATC"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 165991412,
+      "ref": "TAAG"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165991417,
+      "ref": "AGAT"
+    },
+    {
+      "alt": "GT",
+      "chrom": "2",
+      "pos": 165991458,
+      "ref": "G"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 165991477,
+      "ref": "CG"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165991484,
+      "ref": "AAAGGTGGCGTCTGTAAGCACG"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 165991532,
+      "ref": "CTTG"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 165991657,
+      "ref": "TTTGTAAA"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165991669,
+      "ref": "AATAAGAT"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 165991773,
+      "ref": "CGCA"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165991832,
+      "ref": "ACTT"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165991970,
+      "ref": "AACTG"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165991998,
+      "ref": "TGGGT"
+    },
+    {
+      "alt": "AA",
+      "chrom": "2",
+      "pos": 165992087,
+      "ref": "GC"
+    },
+    {
+      "alt": "AA",
+      "chrom": "2",
+      "pos": 165992221,
+      "ref": "GC"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 165992288,
+      "ref": "AAGC"
+    },
+    {
+      "alt": "CGAATCACTCGGACG",
+      "chrom": "2",
+      "pos": 165992355,
+      "ref": "AAGACGGATCACTCGGAACA"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166007069,
+      "ref": "CA"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166007090,
+      "ref": "GAA"
+    },
+    {
+      "alt": "TCC",
+      "chrom": "2",
+      "pos": 166007159,
+      "ref": "T"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166007208,
+      "ref": "AG"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166007228,
+      "ref": "AC"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166007245,
+      "ref": "CAG"
+    },
+    {
+      "alt": "AGAT",
+      "chrom": "2",
+      "pos": 166007286,
+      "ref": "A"
+    },
+    {
+      "alt": "GTTAT",
+      "chrom": "2",
+      "pos": 166007320,
+      "ref": "G"
+    },
+    {
+      "alt": "ATTAG",
+      "chrom": "2",
+      "pos": 166007323,
+      "ref": "A"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166007344,
+      "ref": "AC"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166007362,
+      "ref": "CT"
+    },
+    {
+      "alt": "GC",
+      "chrom": "2",
+      "pos": 166007388,
+      "ref": "G"
+    },
+    {
+      "alt": "ACTTGAGTT",
+      "chrom": "2",
+      "pos": 166007406,
+      "ref": "A"
+    },
+    {
+      "alt": "CTT",
+      "chrom": "2",
+      "pos": 166007407,
+      "ref": "C"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 166007431,
+      "ref": "TATTTAAG"
+    },
+    {
+      "alt": "TAGGA",
+      "chrom": "2",
+      "pos": 166007445,
+      "ref": "T"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166007503,
+      "ref": "CACG"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166007620,
+      "ref": "CA"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166007631,
+      "ref": "GTGA"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166007639,
+      "ref": "AATTT"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166007659,
+      "ref": "ACTT"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166007704,
+      "ref": "CATAAAAGCACATGCTT"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166007733,
+      "ref": "AG"
+    },
+    {
+      "alt": "GTG",
+      "chrom": "2",
+      "pos": 166012265,
+      "ref": "ATA"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166013762,
+      "ref": "GAGA"
+    },
+    {
+      "alt": "GC",
+      "chrom": "2",
+      "pos": 166013909,
+      "ref": "TG"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166015625,
+      "ref": "CTGG"
+    },
+    {
+      "alt": "CAGAACCTGAAGA",
+      "chrom": "2",
+      "pos": 166015631,
+      "ref": "C"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166015706,
+      "ref": "AGCTACT"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166036306,
+      "ref": "CTTG"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166036317,
+      "ref": "GATC"
+    },
+    {
+      "alt": "TT",
+      "chrom": "2",
+      "pos": 166036412,
+      "ref": "CC"
+    },
+    {
+      "alt": "TCACCGAAAC",
+      "chrom": "2",
+      "pos": 166037790,
+      "ref": "T"
+    },
+    {
+      "alt": "TGAAGAC",
+      "chrom": "2",
+      "pos": 166038015,
+      "ref": "T"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166038065,
+      "ref": "GAATTGC"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166039494,
+      "ref": "CAAT"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166039566,
+      "ref": "ACAT"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166041206,
+      "ref": "CACATTTACCTTCCAATATGCTT"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166041223,
+      "ref": "AT"
+    },
+    {
+      "alt": "TG",
+      "chrom": "2",
+      "pos": 166041353,
+      "ref": "CA"
+    },
+    {
+      "alt": "AT",
+      "chrom": "2",
+      "pos": 166041478,
+      "ref": "A"
+    },
+    {
+      "alt": "AATTTGTTACCAACCTTCTACTGT",
+      "chrom": "2",
+      "pos": 166042278,
+      "ref": "A"
+    },
+    {
+      "alt": "GGTTGTTCCCTGTAAAAAAAAATGCTAAT",
+      "chrom": "2",
+      "pos": 166042416,
+      "ref": "G"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166043659,
+      "ref": "ACTTC"
+    },
+    {
+      "alt": "AT",
+      "chrom": "2",
+      "pos": 166043861,
+      "ref": "TC"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166043922,
+      "ref": "GTGC"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166044053,
+      "ref": "GAAGTTTGAAAGAGCA"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166045051,
+      "ref": "GGGA"
+    },
+    {
+      "alt": "AG",
+      "chrom": "2",
+      "pos": 166045281,
+      "ref": "GC"
+    },
+    {
+      "alt": "AT",
+      "chrom": "2",
+      "pos": 166045330,
+      "ref": "A"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 166045334,
+      "ref": "TGAAGA"
+    },
+    {
+      "alt": "AT",
+      "chrom": "2",
+      "pos": 166046749,
+      "ref": "CA"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 166046818,
+      "ref": "TTCGGCC"
+    },
+    {
+      "alt": "TC",
+      "chrom": "2",
+      "pos": 166046965,
+      "ref": "AG"
+    },
+    {
+      "alt": "AA",
+      "chrom": "2",
+      "pos": 166047623,
+      "ref": "TC"
+    },
+    {
+      "alt": "CTTACTTGAATCTTTTACAGGCGTGAGCCACCGCGCCCGGCCNNNNNTTTTT",
+      "chrom": "2",
+      "pos": 166051714,
+      "ref": "C"
+    },
+    {
+      "alt": "ATATATG",
+      "chrom": "2",
+      "pos": 166051730,
+      "ref": "A"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 166051751,
+      "ref": "TCAAAGA"
+    },
+    {
+      "alt": "G",
+      "chrom": "2",
+      "pos": 166051942,
+      "ref": "GAGCTTCTTCACAGACTGGATC"
+    },
+    {
+      "alt": "CG",
+      "chrom": "2",
+      "pos": 166051987,
+      "ref": "GC"
+    },
+    {
+      "alt": "AT",
+      "chrom": "2",
+      "pos": 166052883,
+      "ref": "GA"
+    },
+    {
+      "alt": "TACGT",
+      "chrom": "2",
+      "pos": 166052955,
+      "ref": "AGTTCA"
+    },
+    {
+      "alt": "A",
+      "chrom": "2",
+      "pos": 166054788,
+      "ref": "ATTTGATAAAG"
+    },
+    {
+      "alt": "C",
+      "chrom": "2",
+      "pos": 166073353,
+      "ref": "CT"
+    },
+    {
+      "alt": "AT",
+      "chrom": "2",
+      "pos": 166073461,
+      "ref": "TC"
+    },
+    {
+      "alt": "T",
+      "chrom": "2",
+      "pos": 166073570,
+      "ref": "TGAA"
+    }
+  ],
+  "ok": true,
+  "timestamp_utc": "2026-09-27T23:47:18.256985+00:00",
+  "vcf_path": "data/clinvar_grch38.vcf.gz"
+}
