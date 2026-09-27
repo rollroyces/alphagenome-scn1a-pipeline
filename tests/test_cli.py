@@ -16,6 +16,7 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -37,9 +38,13 @@ def test_subcommands_registered():
     """Every subcommand the task asked for must be wired into the Typer app."""
     from alphagenome_scn1a.cli import app
 
-    # Typer stores registered commands in app.registered_commands (a list of
-    # TyperCommand objects); their ``name`` attribute is the subcommand.
-    names = {cmd.name for cmd in app.registered_commands}
+    # Typer stores registered commands in ``app.registered_commands``. The
+    # public ``name`` slot is None in newer Typer, so we recover the CLI name
+    # from the callback function (``score_gene`` → ``score-gene``).
+    def cli_name(cmd) -> str:
+        return cmd.callback.__name__.replace("_", "-")
+
+    names = {cli_name(cmd) for cmd in app.registered_commands}
     for required in ("info", "tier1", "score-gene", "score-vcf", "reproduce"):
         assert required in names, f"missing CLI command: {required}"
 
@@ -144,13 +149,21 @@ def test_key_value_never_printed_in_missing_error(monkeypatch, tmp_path, capsys)
 # End-to-end CLI invocations
 # ---------------------------------------------------------------------------
 
-def _run_cli(*args: str, env: dict | None = None) -> subprocess.CompletedProcess:
-    """Invoke the CLI as a subprocess (matching what users do)."""
+def _run_cli(*args: str, env: dict | None = None, cwd: Path | None = None) -> subprocess.CompletedProcess:
+    """Invoke the CLI as a subprocess (matching what users do).
+
+    By default we run from a tmpdir with no ``.alphagenome_key`` and HOME
+    pointing somewhere with no ``~/.alphagenome_key`` — so any test that
+    wants to assert "no key" really gets no key. Pass ``cwd=REPO_ROOT`` to
+    override (e.g. to test legacy commands that depend on repo paths).
+    """
     e = {**os.environ, **(env or {})}
     e.pop("ALPHAGENOME_API_KEY", None)  # default: pretend no key
+    workdir = cwd or Path(tempfile.mkdtemp(prefix="alphagenome-cli-test-"))
+    e["HOME"] = str(workdir)  # so ~/.alphagenome_key resolves to a non-existent file
     return subprocess.run(
         [sys.executable, "-m", "alphagenome_scn1a.cli", *args],
-        cwd=str(REPO_ROOT),
+        cwd=str(workdir),
         env=e,
         capture_output=True,
         text=True,
@@ -160,7 +173,7 @@ def _run_cli(*args: str, env: dict | None = None) -> subprocess.CompletedProcess
 
 def test_cli_info_no_key():
     """``info`` must work without an API key."""
-    result = _run_cli("info")
+    result = _run_cli("info", cwd=REPO_ROOT)
     assert result.returncode == 0, result.stdout + result.stderr
     assert "alphagenome-scn1a" in result.stdout
     assert "API key" in result.stdout
@@ -168,7 +181,7 @@ def test_cli_info_no_key():
 
 def test_cli_tier1_no_key():
     """``tier1`` must work without an API key and print 4 candidates."""
-    result = _run_cli("tier1", "SCN1A")
+    result = _run_cli("tier1", "SCN1A", cwd=REPO_ROOT)
     assert result.returncode == 0, result.stdout + result.stderr
     assert "Tier-1 candidates" in result.stdout
     # Should show 4 distinct VUS ranks.
@@ -207,19 +220,16 @@ def test_cli_help_lists_all_commands():
 
 def test_cli_unknown_gene_exits_nonzero(tmp_path):
     """``score-gene`` for a gene the registry doesn't know → exit 2."""
-    # Create a fake VCF-less invocation by passing the gene and capturing the
-    # UnknownGeneError path. Since the key check runs first, we need a key.
-    keyfile = tmp_path / ".alphagenome_key"
-    keyfile.write_text("AIzaSy" + "x" * 35)
-    env = {"ALPHAGENOME_API_KEY": "AIzaSy" + "x" * 35}
+    # Need a key for the resolver to proceed past the missing-key check.
+    fake_key = "AIzaSy" + "x" * 35
+    env = {"ALPHAGENOME_API_KEY": fake_key}
     e = {**os.environ, **env}
+    e["HOME"] = str(tmp_path)  # no ~/.alphagenome_key
     result = subprocess.run(
         [sys.executable, "-m", "alphagenome_scn1a.cli",
          "score-gene", "NOT_A_REAL_GENE", "--output", "/tmp/_x.csv"],
-        cwd=str(REPO_ROOT), env=e, capture_output=True, text=True, timeout=20,
+        cwd=str(tmp_path), env=e, capture_output=True, text=True, timeout=20,
     )
-    # Either exit 2 (UnknownGeneError) — the path we want — or 1 if pytest
-    # can't reach the API. Just verify it fails and the message is helpful.
     assert result.returncode != 0
     combined = result.stdout + result.stderr
     assert "Unknown gene" in combined or "ALPHAGENOME_API_KEY" in combined
