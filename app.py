@@ -577,7 +577,7 @@ def render_browse_page() -> None:
     m1.metric("Variants shown", f"{len(f):,}", delta=f"of {len(df):,}", delta_color="off")
     m2.metric("Tier-1 in view", f"{int((f['tier'] == 1).sum())}")
     m3.metric("Tier-2 in view", f"{int((f['tier'] == 2).sum())}")
-    m4.metric("Absent from gnomAD", f"{int(((~f['present'].fillna(False))).sum())}")
+    m4.metric("Absent from gnomAD", f"{int((f['present'].fillna(False) == False).sum())}")
 
     # ----- Table -----
     table_cols = [
@@ -612,7 +612,7 @@ def render_browse_page() -> None:
     st.markdown(f"**Showing {len(table):,} variants** — click any row for details.")
     event = st.dataframe(
         table,
-        use_container_width=True,
+        width="stretch",
         height=420,
         on_select="rerun",
         selection_mode="single-row",
@@ -930,7 +930,7 @@ def render_submit_vcf_page() -> None:
         return
 
     st.markdown(f"**{len(candidates)} candidate allele(s) parsed.** Preview:")
-    st.dataframe(candidates.head(50), use_container_width=True, hide_index=True)
+    st.dataframe(candidates.head(50), width="stretch", hide_index=True)
 
     if not api_key:
         st.warning("Enter an AlphaGenome API key above to enable scoring.")
@@ -1016,7 +1016,7 @@ def _run_scoring(variants: pd.DataFrame, api_key: str) -> None:
 
     out = pd.DataFrame(results).sort_values("SPLICE_SITES", ascending=False).reset_index(drop=True)
     st.success(f"Scored {len(out)} variant(s) — ranked by AlphaGenome SPLICE_SITES score.")
-    st.dataframe(out, use_container_width=True, hide_index=True)
+    st.dataframe(out, width="stretch", hide_index=True)
 
     csv = out.to_csv(index=False)
     st.download_button(
