@@ -1,0 +1,31 @@
+Creating dna_model client...
+
+Smoke test...
+  smoke OK
+
+Building LDLR filtered (apples-to-apples) benchmark...
+  pathogenic+splice available: 134, capped at 100
+  benign+intronic available: 516, capped at 200
+  Final filtered benchmark: 300 variants (100 pos, 200 neg)
+
+--- filtered run: scoring 300 variants ---
+  [1/300] 0s elapsed, success=0, fail=0, ETA 0s
+  [26/300] 15s elapsed, success=25, fail=0, ETA 154s
+  [51/300] 29s elapsed, success=50, fail=0, ETA 140s
+  [76/300] 43s elapsed, success=75, fail=0, ETA 127s
+  [101/300] 57s elapsed, success=100, fail=0, ETA 113s
+  [126/300] 71s elapsed, success=125, fail=0, ETA 99s
+  [151/300] 85s elapsed, success=150, fail=0, ETA 84s
+  [176/300] 99s elapsed, success=175, fail=0, ETA 70s
+  [201/300] 114s elapsed, success=200, fail=0, ETA 56s
+  [226/300] 128s elapsed, success=225, fail=0, ETA 42s
+  [251/300] 142s elapsed, success=250, fail=0, ETA 28s
+  [276/300] 156s elapsed, success=275, fail=0, ETA 14s
+  [300/300] 169s elapsed, success=299, fail=0, ETA 0s
+
+Done (filtered). 300/300 succeeded, 0 failed, total 170s
+  SPLICE_SITES: AUPRC=0.9999 [0.999, 1.0000], AUROC=1.0000, top-5%=1.000, n=300
+  SPLICE_SITE_USAGE: AUPRC=1.0000 [1.000, 1.0000], AUROC=1.0000, top-5%=1.000, n=300
+  SPLICE_JUNCTIONS: AUPRC=0.9928 [0.983, 0.9997], AUROC=0.9967, top-5%=1.000, n=300
+Saved → outputs/cross_disease_ldlr_filtered_raw.csv
+Saved → outputs/cross_disease_ldlr_filtered_metrics.csv

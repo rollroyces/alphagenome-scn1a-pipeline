@@ -89,7 +89,7 @@ The CLI auto-detects your API key from `$ALPHAGENOME_API_KEY`,
 printed; only a masked form (`AIzaSy****X-JI`) appears in `info` output.
 
 Supported genes (others can be added by passing `--chrom/--start/--end`):
-`SCN1A`, `SCN2A`, `KCNQ2`, `COL4A5`, `FBN1`, `CFTR`, `DMD`, `MECP2`.
+`SCN1A`, `SCN2A`, `KCNQ2`, `COL4A5`, `FBN1`, `NF1`, `LDLR`, `CFTR`, `DMD`, `MECP2`.
 
 Containerised equivalent:
 

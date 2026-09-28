@@ -18,3 +18,14 @@ Building NF1 filtered (apples-to-apples) benchmark...
   [151/300] 86s elapsed, success=150, fail=0, ETA 85s
   [176/300] 100s elapsed, success=175, fail=0, ETA 71s
   [201/300] 113s elapsed, success=200, fail=0, ETA 56s
+  [226/300] 127s elapsed, success=225, fail=0, ETA 42s
+  [251/300] 141s elapsed, success=250, fail=0, ETA 28s
+  [276/300] 155s elapsed, success=275, fail=0, ETA 14s
+  [300/300] 168s elapsed, success=299, fail=0, ETA 0s
+
+Done (filtered). 300/300 succeeded, 0 failed, total 169s
+  SPLICE_SITES: AUPRC=1.0000 [1.000, 1.0000], AUROC=1.0000, top-5%=1.000, n=300
+  SPLICE_SITE_USAGE: AUPRC=0.9981 [0.995, 1.0000], AUROC=0.9991, top-5%=1.000, n=300
+  SPLICE_JUNCTIONS: AUPRC=0.9943 [0.985, 0.9997], AUROC=0.9973, top-5%=1.000, n=300
+Saved → outputs/cross_disease_nf1_filtered_raw.csv
+Saved → outputs/cross_disease_nf1_filtered_metrics.csv
