@@ -78,6 +78,22 @@ streamlit run app.py
 The app launches on `http://localhost:8501`. Page 4 (Submit VCF) additionally needs
 `pip install alphagenome` and a free API key.
 
+## Free public hosting (no HF Pro required)
+
+Hugging Face Spaces for Streamlit require a **Pro subscription** as of 2026
+(see [HF Spaces free-tier changes](https://toolfreebie.com/hugging-face-spaces-free-gpu/)).
+The free alternatives that work with this codebase as-is:
+
+- **[Streamlit Community Cloud](https://share.streamlit.io)** — GitHub-connected free hosting;
+  connect this repo, point at `app.py`, deploy in ~2 minutes. **This is the recommended
+  hosting target.** Unlimited public apps, free tier, sleeps on inactivity.
+- **Render / Railway / Fly.io** — generic Docker hosts; ship the repo as a container with
+  `streamlit run app.py --server.port $PORT --server.address 0.0.0.0` as the entrypoint.
+
+This Space repo (`RROL/alphagenome-scn1a-app`) stores the deployable artifacts but cannot
+run as a live Streamlit Space on the RROL free-tier account. The Space runtime is paused
+(`errorMessage: Quota exceeded for flavor cpu-basic`).
+
 ## Citation
 
 ```
